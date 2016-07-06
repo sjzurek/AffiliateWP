@@ -4,7 +4,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: 'assets/css',
-			src: 'admin.css',
+			src: ['*.css', '!*.min.css'],
 			dest: 'assets/css',
 			ext: '.min.css'
 		}]
