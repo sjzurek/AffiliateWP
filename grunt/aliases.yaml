@@ -10,6 +10,7 @@
 - 'newer:potomo'
 # Build everything
 build:
+- 'cssmin'
 - 'clean'
 - 'copy'
 - 'compress'
@@ -19,4 +20,3 @@ style:
 # Default task
 default:
 - 'makepot'
-
