@@ -175,4 +175,12 @@ function affwp_email_tag_referral_url( $affiliate_id = 0 ) {
 function affwp_email_tag_affiliate_id( $affiliate_id = 0 ) {
 	return $affiliate_id;
 }
-
+/**
+ * Email template tag: review URL
+ * Affiliate's review page URL
+ *
+ * @return string URL to the review page
+ */
+function affwp_email_tag_review_url( $affiliate_id = 0 ) {
+	return wp_admin( 'admin.php?page=affiliate-wp-affiliates&affiliate_id=' . absint( $affiliate_id ) . '&action=review_affiliate' );
+}
