@@ -388,17 +388,19 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 				<p class="description"><?php _e( 'This rate will be used to calculate affiliate earnings when members subscribe to this level. Leave blank to use the site default referral rate.', 'affiliate-wp' ); ?></p>
 			</td>
 		</tr>
-		<tr class="form-field">
-			<th scope="row" valign="top">
-				<?php _e( 'Disable Referrals', 'affiliate-wp' ); ?>
-			</th>
-			<td>
-				<label for="rcp-affwp-disable-referrals">
-					<input name="affwp_rcp_disable_referrals" id="rcp-affwp-disable-referrals" type="checkbox" value="1"<?php checked( true, $disabled ); ?>/>
-					<?php _e( 'Disable referrals on this subscription level.', 'affiliate-wp' ); ?></p>
-				</label>
-			</td>
-		</tr>
+		<?php if ( is_a( $rcp_levels_db, 'RCP_Levels' ) ) : ?>
+			<tr class="form-field">
+				<th scope="row" valign="top">
+					<?php _e( 'Disable Referrals', 'affiliate-wp' ); ?>
+				</th>
+				<td>
+					<label for="rcp-affwp-disable-referrals">
+						<input name="affwp_rcp_disable_referrals" id="rcp-affwp-disable-referrals" type="checkbox" value="1"<?php checked( true, $disabled ); ?>/>
+						<?php _e( 'Disable referrals on this subscription level.', 'affiliate-wp' ); ?></p>
+					</label>
+				</td>
+			</tr>
+		<?php endif; ?>
 <?php
 	}
 
