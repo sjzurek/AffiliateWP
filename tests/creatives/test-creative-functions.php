@@ -75,7 +75,7 @@ class Creative_Functions_Tests extends WP_UnitTestCase {
 	 * @covers affwp_get_creative()
 	 */
 	public function test_get_creative_with_valid_creative_id_should_return_creative() {
-		$this->assertInstanceOf( 'AffWP_Creative', affwp_get_creative( $this->_creative_id ) );
+		$this->assertInstanceOf( 'AffWP\Creative', affwp_get_creative( $this->_creative_id ) );
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Creative_Functions_Tests extends WP_UnitTestCase {
 	public function test_get_creative_with_valid_creative_object_should_return_creative() {
 		$creative = affwp_get_creative( $this->_creative_id );
 
-		$this->assertInstanceOf( 'AffWP_Creative', affwp_get_creative( $creative ) );
+		$this->assertInstanceOf( 'AffWP\Creative', affwp_get_creative( $creative ) );
 	}
 
 	/**

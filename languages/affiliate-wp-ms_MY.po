@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AffiliateWP\n"
 "Report-Msgid-Bugs-To: https://affiliatewp.com/support/\n"
-"POT-Creation-Date: 2016-05-05 14:11:19+00:00\n"
-"PO-Revision-Date: 2015-07-30 17:39+1200\n"
-"Last-Translator: Andrew Munro, Sumobi <andrew@sumobi.com>\n"
+"POT-Creation-Date: 2016-05-24 08:37+1200\n"
+"PO-Revision-Date: 2016-05-25 13:52+1200\n"
+"Last-Translator: AffiliateWP Support <support@affiliatewp.com>\n"
 "Language-Team: AffiliateWP <support@affiliatewp.com>\n"
-"Language: ms_MY@latin\n"
+"Language: ms@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.3\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -30,9 +30,12 @@ msgid ""
 "AffiliateWP. Please contact your host and request that your version be "
 "upgraded to 5.3 or later."
 msgstr ""
+"Versi PHP anda tidak memenuhi syarat minimum yang di perlukan oleh "
+"AffiliateWP. Sila hubungi pelayar anda dan meminta untuk menaiktaraf kepada "
+"5.3 ke atas."
 
 #: includes/admin/AFFWP_Plugin_Updater.php:186
-#, fuzzy
+#, fuzzy, php-format
 msgid ""
 "There is a new version of %1$s available. %2$sView version %3$s details%4$s."
 msgstr ""
@@ -40,7 +43,7 @@ msgstr ""
 "\"%2$s\">Papar maklumat %3$s versi terkini</a>."
 
 #: includes/admin/AFFWP_Plugin_Updater.php:194
-#, fuzzy
+#, fuzzy, php-format
 msgid ""
 "There is a new version of %1$s available. %2$sView version %3$s details%4$s "
 "or %5$supdate now%6$s."
@@ -63,8 +66,7 @@ msgstr "Anda tidak dibenarkan untuk memasang plugin terkini"
 #: includes/admin/affiliates/actions.php:138
 #: includes/admin/affiliates/actions.php:142
 #: includes/admin/class-addon-updater.php:280
-#: includes/admin/class-notices.php:219
-#: includes/admin/creatives/actions.php:16
+#: includes/admin/class-notices.php:219 includes/admin/creatives/actions.php:16
 #: includes/admin/creatives/actions.php:44
 #: includes/admin/creatives/actions.php:48
 #: includes/admin/creatives/actions.php:52
@@ -77,42 +79,54 @@ msgid "Error"
 msgstr "Ralat"
 
 #: includes/admin/add-ons.php:24
-#, fuzzy
 msgid "Add-ons for AffiliateWP"
-msgstr "Tambah Affiliate"
+msgstr "Tambahan untuk AffiliateWP"
 
 #: includes/admin/add-ons.php:26 includes/admin/add-ons.php:59
 msgid "Browse all add-ons"
-msgstr ""
+msgstr "Layar semua tambahan"
 
 #: includes/admin/add-ons.php:29
 msgid ""
 "These add-ons <em><strong>add functionality</strong></em> to your "
 "AffiliateWP-powered site."
 msgstr ""
+"<em><strong>Tambahkan fungsi penambahan </em></strong>ini di laman sesawang "
+"dikuasakan oleh AffiliateWP."
 
 #: includes/admin/add-ons.php:51
+#, php-format
 msgid ""
 "Pro add-ons are only available with a Professional or Ultimate license. If "
 "you already have one of these licenses, simply <a href=\"%s\">log in to your "
 "account</a> to download any of these add-ons."
 msgstr ""
+"Tambahan Pro hanya disediakan dengan lesen Professional atau Ultimate. Jika "
+"anda sudah mempunyai salah satu lesen ini, adan boleh <a href=\"%s\"> log "
+"masuk di akaun </a> untuk memuat turun tambahan ini."
 
 #: includes/admin/add-ons.php:52
+#, php-format
 msgid ""
 "If you have a Personal or Plus license, you can easily upgrade from your "
 "account page to <a href=\"%s\">get access to all of these add-ons</a>!"
 msgstr ""
+"Jika anda mempunya lesen Personal atau Plus, anda boleh menaiktaraf dari "
+"laman akaun anda untuk <a href=\"%s\">mendapat semua akses penambahan ini</"
+"a>!"
 
 #: includes/admin/add-ons.php:54
 msgid "Our official free add-ons are available to all license holders!"
 msgstr ""
+"Penambahan percuma rasmi kami boleh didapati untuk semua pemegang lesen!"
 
 #: includes/admin/add-ons.php:95
 msgid ""
 "There was an error retrieving the add-ons list from the server. Please try "
 "again later."
 msgstr ""
+"Terdapat ralat untuk mendapatkan semula senarai penambahan dari pelayar. "
+"Sila cuba sebentar lagi."
 
 #: includes/admin/affiliates/actions.php:20
 #: includes/admin/affiliates/actions.php:107
@@ -126,8 +140,7 @@ msgstr "Anda tidak dibenarkan untuk memadam akaun affiliate"
 
 #: includes/admin/affiliates/actions.php:56
 #: includes/admin/affiliates/actions.php:142
-#: includes/admin/class-notices.php:219
-#: includes/admin/creatives/actions.php:48
+#: includes/admin/class-notices.php:219 includes/admin/creatives/actions.php:48
 #: includes/admin/referrals/actions.php:20
 #: includes/admin/referrals/actions.php:51
 #: includes/admin/referrals/actions.php:82
@@ -138,9 +151,8 @@ msgstr "Pemeriksaan sekuriti telah gagal"
 msgid "No affiliate IDs specified for deletion"
 msgstr "Affiliate ID tidak dipilih untuk dipadam"
 
-#: includes/admin/affiliates/affiliates.php:54
-#: includes/admin/class-menu.php:11 includes/admin/class-menu.php:13
-#: includes/admin/class-welcome.php:298
+#: includes/admin/affiliates/affiliates.php:54 includes/admin/class-menu.php:11
+#: includes/admin/class-menu.php:13 includes/admin/class-welcome.php:298
 msgid "Affiliates"
 msgstr "Affiliate"
 
@@ -245,12 +257,11 @@ msgstr "Referral yang telah dibayar"
 #: includes/admin/affiliates/affiliates.php:230
 #: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:308
 #: includes/admin/overview/overview.php:170
-#: includes/admin/reports/reports.php:66
-#: includes/admin/reports/reports.php:185
+#: includes/admin/reports/reports.php:66 includes/admin/reports/reports.php:185
 #: includes/admin/tools/export/class-export-affiliates.php:55
 #: includes/admin/tools/tools.php:132 includes/admin/visits/visits.php:30
 #: templates/dashboard-tab-stats.php:10 templates/dashboard-tab-stats.php:57
-#: templates/dashboard.php:60
+#: templates/dashboard.php:58
 msgid "Visits"
 msgstr "Lawatan"
 
@@ -337,13 +348,19 @@ msgstr "Affiliate tidak dijumpai."
 msgid "Delete Affiliates"
 msgstr "Padam Affiliate"
 
-#: includes/admin/affiliates/delete.php:36
+#: includes/admin/affiliates/delete.php:37
 #, fuzzy
 msgid "You have specified the following affiliate for deletion:"
 msgid_plural "You have specified the following affiliates for deletion:"
 msgstr[0] "Anda telah memilih affiliate ini untuk dipadam:"
 
-#: includes/admin/affiliates/delete.php:55
+#: includes/admin/affiliates/delete.php:47
+#, php-format
+msgctxt "Affiliate ID, affiliate name"
+msgid "ID #%d: %s"
+msgstr "ID #%d: %s"
+
+#: includes/admin/affiliates/delete.php:56
 #, fuzzy
 msgid "Deleting this affiliate will also delete their referral and visit data."
 msgid_plural ""
@@ -354,15 +371,15 @@ msgstr[0] ""
 
 #: includes/admin/affiliates/delete.php:67
 msgid "(The current user will not be deleted)"
-msgstr ""
+msgstr "(Pengguna semasa tidak akan dipadam)"
 
 #: includes/admin/affiliates/delete.php:91
 msgid "Confirm Deletion"
-msgstr ""
+msgstr "Sahkan Pemadaman"
 
 #: includes/admin/affiliates/edit.php:15
 msgid "Edit Affiliate"
-msgstr "Edit Affiliate"
+msgstr "Ubah Affiliate"
 
 #: includes/admin/affiliates/edit.php:26
 #, fuzzy
@@ -370,15 +387,19 @@ msgid "Affiliate Name"
 msgstr "Nama affiliate"
 
 #: includes/admin/affiliates/edit.php:32
+#, php-format
 msgid ""
 "The affiliate's first and/or last name. Will be empty if no name is "
 "specified. This can be changed on the <a href=\"%1$s\" alt=\"%2$s\">user "
 "edit screen</a>."
 msgstr ""
+"Affiliate nama pertama dan/atau terakhir. Akan kosong jika tiada nama "
+"dinyatakan. Ini boleh diubah pada <a href=\"%1$s\" alt=\"%2$s\">skrin ubah "
+"pengguna</a>."
 
 #: includes/admin/affiliates/edit.php:34
 msgid "A link to the user edit screen for this user."
-msgstr ""
+msgstr "Pautan ke skrin ubah pengguna untuk pengguna ini."
 
 #: includes/admin/affiliates/edit.php:49
 msgid "The affiliate's ID. This cannot be changed."
@@ -468,7 +489,7 @@ msgstr ""
 #: includes/admin/affiliates/edit.php:154
 #: includes/admin/affiliates/review.php:86
 msgid "Rejection Reason"
-msgstr ""
+msgstr "Sebab Penolakan"
 
 #: includes/admin/affiliates/edit.php:172
 msgid "Update Affiliate"
@@ -479,6 +500,7 @@ msgid "New Affiliate"
 msgstr "Affiliate Baru"
 
 #: includes/admin/affiliates/new.php:13
+#, php-format
 msgid ""
 "Use this screen to register a new affiliate. Each affiliate is tied directly "
 "to a user account, so if the user account for the affiliate does not yet "
@@ -497,7 +519,7 @@ msgstr "Pengguna"
 msgid ""
 "Begin typing the name of the affiliate to perform a search for their "
 "associated user account."
-msgstr "taipkan nama affiliate untuk mencari akaun penggunanya."
+msgstr "Taipkan nama affiliate untuk mencari akaun penggunanya."
 
 #: includes/admin/affiliates/new.php:36
 #, fuzzy
@@ -510,13 +532,12 @@ msgid "The status assigned to the affiliate's account."
 msgstr "Nama pengguna affiliate di dalam laman web"
 
 #: includes/admin/affiliates/new.php:97
-#, fuzzy
 msgid "Welcome Email"
-msgstr "Emel Daripada"
+msgstr "Emel Selamat Datang"
 
 #: includes/admin/affiliates/new.php:103
 msgid "Send welcome email after registering affiliate?"
-msgstr ""
+msgstr "Hantar emel selamat datang selepas mendaftar affiliate?"
 
 #: includes/admin/affiliates/new.php:117
 msgid "Add Affiliate"
@@ -524,7 +545,7 @@ msgstr "Tambah Affiliate"
 
 #: includes/admin/affiliates/review.php:11
 msgid "Review Affiliate"
-msgstr "Review Affiliate"
+msgstr "Semakan Affiliate"
 
 #: includes/admin/affiliates/review.php:11
 msgid "Go Back"
@@ -549,13 +570,22 @@ msgstr "Kaedah Promosi"
 
 #: includes/admin/affiliates/review.php:91
 msgid "Leave blank if approving this affiliate"
-msgstr ""
+msgstr "Biarkan kosong jika memberi kelulusan kepada affiliate ini"
+
+#: includes/admin/affiliates/review.php:105
+msgid "Accept Affiliate"
+msgstr "Terima Affiliate"
+
+#: includes/admin/affiliates/review.php:106
+msgid "Reject Affiliate"
+msgstr "Tolak Affiliate"
 
 #: includes/admin/affiliates/screen-options.php:22
 msgid "Number of affiliates per page:"
-msgstr ""
+msgstr "Bilangan affiliates setiap halaman"
 
 #: includes/admin/affiliates/view.php:7
+#, php-format
 msgid "Affiliate: #%d %s"
 msgstr "Affiliate: #%d %s"
 
@@ -588,6 +618,7 @@ msgid "Total visits"
 msgstr "Jumlah lawatan"
 
 #: includes/admin/class-addon-updater.php:186
+#, php-format
 msgid ""
 "There is a new version of %1$s available. <a target=\"_blank\" class="
 "\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
@@ -596,6 +627,7 @@ msgstr ""
 "\"%2$s\">Papar maklumat %3$s versi terkini</a>."
 
 #: includes/admin/class-addon-updater.php:193
+#, php-format
 msgid ""
 "There is a new version of %1$s available. <a target=\"_blank\" class="
 "\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
@@ -617,12 +649,12 @@ msgstr "Gambaran Keseluruhan"
 #: includes/admin/reports/reports.php:65
 #: includes/admin/tools/export/class-export-affiliates.php:54
 #: includes/admin/tools/tools.php:131 templates/dashboard-tab-referrals.php:3
-#: templates/dashboard.php:54
+#: templates/dashboard.php:52
 msgid "Referrals"
 msgstr "Referral"
 
 #: includes/admin/class-menu.php:16 includes/admin/creatives/creatives.php:42
-#: templates/dashboard-tab-creatives.php:3 templates/dashboard.php:66
+#: templates/dashboard-tab-creatives.php:3 templates/dashboard.php:64
 msgid "Creatives"
 msgstr "Kreatif"
 
@@ -630,7 +662,7 @@ msgstr "Kreatif"
 msgid "Tools"
 msgstr "Tool"
 
-#: includes/admin/class-menu.php:19 templates/dashboard.php:72
+#: includes/admin/class-menu.php:19 templates/dashboard.php:70
 msgid "Settings"
 msgstr "Tetapan"
 
@@ -640,14 +672,22 @@ msgstr "Migrasi AffiliateWP"
 
 #: includes/admin/class-menu.php:21
 msgid "Add-ons"
-msgstr ""
+msgstr "Penambahan"
 
 #: includes/admin/class-notices.php:18
+#, php-format
 msgid ""
 "There are currently no AffiliateWP <a href=\"%s\">integrations</a> enabled. "
 "If you are using AffiliateWP without any integrations, you may disregard "
 "this message."
 msgstr ""
+"Tidak terdapat <a href=\"%s\">integrasi </a>AffiliateWP yang aktif. Jika "
+"anda menggunakan AffiliateWP tanpa integrasi, anda boleh abaikan mesej ini."
+
+#: includes/admin/class-notices.php:19
+msgctxt "Integrations"
+msgid "Dismiss Notice"
+msgstr "Abaikan Notis [Integrasi]"
 
 #: includes/admin/class-notices.php:26
 #: includes/admin/settings/class-settings.php:249
@@ -667,6 +707,7 @@ msgid "Affiliate updated successfully"
 msgstr "Affiliate telah berjaya dikemas kini"
 
 #: includes/admin/class-notices.php:50
+#, php-format
 msgid "<a href=\"%s\">Back to Affiliates</a>"
 msgstr "<a href=\"%s\">Kembali kepada Affiliate</a>"
 
@@ -727,6 +768,7 @@ msgid "Creative updated successfully"
 msgstr "Kreatif telah berjaya dikemas kini"
 
 #: includes/admin/class-notices.php:139
+#, php-format
 msgid "<a href=\"%s\">Back to Creatives</a>"
 msgstr "<a href=\"%s\">Kembali ke Kreatif</a>"
 
@@ -755,12 +797,22 @@ msgid ""
 "Your license key for AffiliateWP has expired. Please renew your license to "
 "re-enable automatic updates."
 msgstr ""
+"Kunci lesen anda untuk AffiliateWP telah tamat. Sila perbaharui lesen anda "
+"untuk membolehkan semula kemas kini automatik."
+
+#: includes/admin/class-notices.php:194 includes/admin/class-notices.php:202
+msgctxt "License"
+msgid "Dismiss Notice"
+msgstr "Abaikan Notis [Lesen]"
 
 #: includes/admin/class-notices.php:201
+#, php-format
 msgid ""
 "Please <a href=\"%s\">enter and activate</a> your license key for "
 "AffiliateWP to enable automatic updates."
 msgstr ""
+"Sila <a href=\"%s\"> masukkan dan mengaktifkan</a>kunci lesen anda untuk "
+"AffiliateWP bagi membolehkan kemas kini automatik."
 
 #: includes/admin/class-welcome.php:52 includes/admin/class-welcome.php:53
 msgid "What's new in AffiliateWP"
@@ -787,10 +839,12 @@ msgid "Credits"
 msgstr "Kredit"
 
 #: includes/admin/class-welcome.php:169
+#, php-format
 msgid "Welcome to AffiliateWP v%s"
 msgstr "Selamat datang ke AffiliateWP v%s"
 
 #: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:246
+#, php-format
 msgid ""
 "Thank you for installing AffiliateWP v%s. The best affiliate marketing "
 "plugin for WordPress."
@@ -800,6 +854,7 @@ msgstr ""
 
 #: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:247
 #: includes/admin/class-welcome.php:343
+#, php-format
 msgid "Version %s"
 msgstr "Versi %s"
 
@@ -809,45 +864,45 @@ msgid "New Integrations"
 msgstr "Integrasi terkini"
 
 #: includes/admin/class-welcome.php:180
-#, fuzzy
 msgid ""
 "We’ve made AffiliateWP more accessible and more valuable to more users with "
 "three new integrations:"
 msgstr ""
-"Untuk membuatkan AffiliateWP lebih mudah digunakan dan lebih bernilai kepada "
-"lebih ramai pengguna, kami telah menambah empat lagi integrasi terkini:"
+"Kami jadikan AffiliateWP lebih mudah dan lebih berharga kepada lebih ramai "
+"pengguna dengan tiga integrasi baru:"
 
 #: includes/admin/class-welcome.php:188
-#, fuzzy
 msgid "Improved Integrations"
-msgstr "Integrasi"
+msgstr "Integrasi yang lebih baik"
 
 #: includes/admin/class-welcome.php:191
 msgid ""
 "Per-membership commission rates are now supported in Restrict Content Pro"
-msgstr ""
+msgstr "Kadar komisen keahlian kini disokong di Restrict Content Pro"
 
 #: includes/admin/class-welcome.php:192
 msgid "Per-membership commission rates are now supported in MemberPress"
-msgstr ""
+msgstr "Kadar komisen setiap keahlian kini disokong di MemberPress"
 
 #: includes/admin/class-welcome.php:193
 msgid "Commissions can be disabled on individual forms in Gravity Forms"
-msgstr ""
+msgstr "Komisen boleh dinyahaktifkan pada borang individu dalam Gravity Forms"
 
 #: includes/admin/class-welcome.php:194
 msgid "Commissions can be disabled on individual forms in Ninja Forms"
-msgstr ""
+msgstr "Komisen boleh dinyahaktifkan pada borang individu dalam Ninja Forms"
 
 #: includes/admin/class-welcome.php:195
 msgid ""
 "Affiliate commissions are now shown on the order details screens in Paid "
 "Memberships Pro"
 msgstr ""
+"Komisen affiliate kini menunjukkan butir-butir pesanan di dalam skrin Paid "
+"Memberships Pro"
 
 #: includes/admin/class-welcome.php:198
 msgid "URL Campaign Tracking"
-msgstr ""
+msgstr "URL Campaign Tracking"
 
 #: includes/admin/class-welcome.php:199
 msgid ""
@@ -856,11 +911,14 @@ msgid ""
 "table has been added to the Statistics tab of the affiliate area to show "
 "affiliates the results of their URL campaigns."
 msgstr ""
+"Kini Affiliate disertakan dengan parameter URL campaign di pautan affiliate "
+"mereka sendiri dan dijejaki secara automatik oleh AffiliateWP. Table "
+"\"Campaign\" terbaru telah di masukkan ke tab Statistics Affiliate untuk "
+"untuk menunjukkan gabungan hasil kempen URL mereka."
 
 #: includes/admin/class-welcome.php:201
-#, fuzzy
 msgid "Affiliate Rejection Reasons"
-msgstr "Pendaftaran Affiliate"
+msgstr "Sebab Penolakan Affiliate"
 
 #: includes/admin/class-welcome.php:202
 msgid ""
@@ -868,78 +926,93 @@ msgid ""
 "is then (optionally) emailed to the affiliate and recorded for future "
 "reference."
 msgstr ""
+"Apabila menolak akaun affiliate, alasan penolakan boleh disediakan yang "
+"kemudian (pilihan) di e-mel kan kepada affiliate dan untuk maklumat rujukan "
+"masa depan."
 
 #: includes/admin/class-welcome.php:204
 msgid "reCaptcha v2.0"
-msgstr ""
+msgstr "reCaptcha v2.0"
 
 #: includes/admin/class-welcome.php:205
 msgid ""
 "Google's reCaptcha version 2.0 library has been introduced to AffiliateWP to "
 "help protect you and your website from spam user registrations."
 msgstr ""
+"Library Google's reCaptcha versi 2.0 telah diperkenalkan untuk AffiliateWP "
+"bagi membantu melindungi anda dan laman web anda daripada pendaftaran "
+"pengguna spam."
 
 #: includes/admin/class-welcome.php:207
 msgid "Additional Updates"
-msgstr "Kemas Kini Tambahan"
+msgstr "Kemaskini Tambahan"
 
 #: includes/admin/class-welcome.php:209
 msgid "Improved User Searching"
-msgstr ""
+msgstr "Peningkatan Pencarian Pengguna"
 
 #: includes/admin/class-welcome.php:210
 msgid ""
 "When creating new affiliate accounts, the search process for users in your "
 "WordPress site now return better results."
 msgstr ""
+"Apabila membuat akaun affiliate baru, proses carian untuk pengguna di laman "
+"web WordPress anda kini kembali dengan keputusan yang lebih baik."
 
 #: includes/admin/class-welcome.php:212
 msgid "Per-Page Options for Admin Screens"
-msgstr ""
+msgstr "Pilihan Halaman untuk Skrin Admin"
 
 #: includes/admin/class-welcome.php:213
 msgid ""
 "Admin pages for Affiliates, Referrals, Visits, and Creatives can have the "
 "number of items per-page configured from the Screen Options tab."
 msgstr ""
+"Laman Admin untuk Affiliate, Referrals, Lawatan dan Kreatif boleh "
+"dikonfigurasikan untuk mempunyai bilangan halaman dari tab Screen Options."
 
 #: includes/admin/class-welcome.php:215
-#, fuzzy
 msgid "Disable Individual Emails"
-msgstr "Matikan referral"
+msgstr "Matikan E-mel Individu"
 
 #: includes/admin/class-welcome.php:216
 msgid ""
 "New options have been introduced that allow you to pick-and-choose which "
 "email notifications AffiliateWP will send."
 msgstr ""
+"Pilihan baru telah diperkenalkan bagi membolehkan anda pilih dan memilih "
+"untuk menghantar e-mel pemberitahuan AffiliateWP."
 
 #: includes/admin/class-welcome.php:218
-#, fuzzy
 msgid "Creative Template File"
-msgstr "Kreatif dimatikan"
+msgstr "Fail Template Creative"
 
 #: includes/admin/class-welcome.php:219
 msgid ""
 "A new template file has been introduced for exact control over the display "
 "of creatives in the affiliate area."
 msgstr ""
+"Fail template baru telah diperkenalkan untuk kawalan tepat atas paparan "
+"kreatif di kawasan affiliate."
 
 #: includes/admin/class-welcome.php:221
 msgid "Import Users By Role"
-msgstr ""
+msgstr "Import Pengguna Melalui Peranan"
 
 #: includes/admin/class-welcome.php:222
 msgid ""
 "When importing existing users as affiliates, an option to import just users "
 "of a specific role is now available."
 msgstr ""
+"Apabila mengimport pengguna sedia ada sebagai Affilaite, kini didapati "
+"pilihan untuk mengimport peranan pengguna yang tertentu sahaja."
 
 #: includes/admin/class-welcome.php:228 includes/admin/class-welcome.php:315
 msgid "Go to AffiliateWP Settings"
 msgstr "Pergi ke Setting AffiliateWP"
 
 #: includes/admin/class-welcome.php:245 includes/admin/class-welcome.php:341
+#, php-format
 msgid "Welcome to AffiliateWP %s"
 msgstr "Selamat Datang ke AffiliateWP %s"
 
@@ -1044,12 +1117,11 @@ msgid "A Dashboard For Your Affiliates"
 msgstr "Dashboard untuk affiliate anda"
 
 #: includes/admin/class-welcome.php:287
-#, fuzzy
 msgid ""
 "The Affiliate Area, shown on any page containing the <em>[affiliate_area]</"
 "em> shortcode, gives your affiliates access to their performance reports."
 msgstr ""
-"Ruangan Affiliate, menunjukkan setiap laman yang mengandungi shot code  "
+"Ruangan Affiliate, menunjukkan setiap laman yang mengandungi shortcode  "
 "<em>[affiliate_area]</em>, memberikan affiliate anda akses kepada laporan "
 "kemajuan mereka."
 
@@ -1139,6 +1211,7 @@ msgstr ""
 "membina AffiliateWP."
 
 #: includes/admin/class-welcome.php:374
+#, php-format
 msgid "View %s"
 msgstr "Paparan %s"
 
@@ -1178,6 +1251,12 @@ msgstr "PAdam Kreatif"
 #: includes/admin/creatives/delete.php:16
 msgid "Are you sure you want to delete this creative?"
 msgstr "Anda pasti anda ingin memadam kreatif ini?"
+
+#: includes/admin/creatives/delete.php:21
+#, php-format
+msgctxt "Creative ID, creative name"
+msgid "Creative ID #%d: %s"
+msgstr "ID Kreatif #%d: %s"
 
 #: includes/admin/creatives/edit.php:6
 msgid "Edit Creative"
@@ -1265,7 +1344,7 @@ msgstr "Tambah Kreatif"
 
 #: includes/admin/creatives/screen-options.php:22
 msgid "Number of creatives per page:"
-msgstr ""
+msgstr "Bilangan kreatif bagi setiap halaman:"
 
 #: includes/admin/overview/overview.php:26
 msgid "Totals"
@@ -1319,8 +1398,7 @@ msgstr "Pendaftaran Affiliate Terkini"
 #: includes/admin/overview/overview.php:116
 #: includes/admin/overview/overview.php:167
 #: includes/admin/overview/overview.php:205
-#: includes/admin/overview/overview.php:240
-#: includes/admin/referrals/new.php:16
+#: includes/admin/overview/overview.php:240 includes/admin/referrals/new.php:16
 #: includes/admin/referrals/referrals.php:227
 #: includes/admin/visits/visits.php:143
 #: includes/integrations/class-memberpress.php:240
@@ -1364,9 +1442,9 @@ msgstr "Tiada referral direkodkan lagi"
 msgid "Recent Referral Visits"
 msgstr "Lawatan Referral Terkini"
 
-#: includes/admin/overview/overview.php:242
-#: includes/admin/visits/visits.php:45 includes/admin/visits/visits.php:146
-#: templates/dashboard-tab-stats.php:59 templates/dashboard-tab-visits.php:27
+#: includes/admin/overview/overview.php:242 includes/admin/visits/visits.php:45
+#: includes/admin/visits/visits.php:146 templates/dashboard-tab-stats.php:59
+#: templates/dashboard-tab-visits.php:27
 msgid "Converted"
 msgstr "Telah Ditukar (Converted)"
 
@@ -1391,11 +1469,13 @@ msgstr "Untuk maklumat lanjut"
 
 #: includes/admin/referrals/contextual-help.php:30
 #: includes/admin/visits/contextual-help.php:30
+#, php-format
 msgid "Visit the <a href=\"%s\">documentation</a> on the AffiliateWP website."
 msgstr "Lawati <a href=\"%s\">dokumentasi</a> di laman web AffiliateWP."
 
 #: includes/admin/referrals/contextual-help.php:31
 #: includes/admin/visits/contextual-help.php:31
+#, php-format
 msgid "<a href=\"%s\">Post an issue</a> on <a href=\"%s\">GitHub</a>."
 msgstr "<a href=\"%s\">Post isu</a> pada  <a href=\"%s\">GitHub</a>."
 
@@ -1472,9 +1552,8 @@ msgstr "Anda boleh masukkan nombor ID affiliate dengan awalan 'affiliate:'"
 
 #: includes/admin/referrals/contextual-help.php:60
 #: includes/admin/visits/contextual-help.php:59
-#, fuzzy
 msgid "You can enter a URL campaign prefixed by 'campaign:'"
-msgstr "Anda boleh masukkan konteks referral dengan awalan 'context:'"
+msgstr "Anda boleh masukkan URL Campaign dengan awalan campaign:'"
 
 #: includes/admin/referrals/contextual-help.php:66
 msgid "Exporting Referrals"
@@ -1617,6 +1696,7 @@ msgid "Generate CSV File"
 msgstr "Jana Fail CSV"
 
 #: includes/admin/referrals/referrals.php:54
+#, php-format
 msgid ""
 "This will mark all unpaid referrals in this timeframe as paid. To export "
 "referrals with a status other than <em>unpaid</em>, go to the <a href=\"%s"
@@ -1662,9 +1742,8 @@ msgid "Filter"
 msgstr "Tapis"
 
 #: includes/admin/referrals/screen-options.php:22
-#, fuzzy
 msgid "Number of referrals per page:"
-msgstr "Tiada referral direkodkan lagi"
+msgstr "Nombor referal per halaman:"
 
 #: includes/admin/reports/class-registrations-graph.php:68
 #: includes/admin/reports/reports.php:67
@@ -1689,6 +1768,7 @@ msgid "License Key"
 msgstr "Nombor Lesen"
 
 #: includes/admin/settings/class-settings.php:355
+#, php-format
 msgid ""
 "Please enter your license key. An active license key is needed for automatic "
 "plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
@@ -1723,6 +1803,7 @@ msgid "Referral Variable"
 msgstr "Pembolehubah Referral"
 
 #: includes/admin/settings/class-settings.php:385
+#, php-format
 msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
 msgstr "Pembolehubah URL untuk YRL referral. Contohnya: <strong>%s</strong>."
 
@@ -1731,6 +1812,7 @@ msgid "Default Referral Format"
 msgstr "Format Referral Utama"
 
 #: includes/admin/settings/class-settings.php:391
+#, php-format
 msgid ""
 "Show referral URLs to affiliates with either their affiliate ID or Username "
 "appended.<br/> For example: <strong>%s or %s</strong>."
@@ -1748,6 +1830,7 @@ msgid "Pretty Affiliate URLs"
 msgstr "URL Affiliate Cantik"
 
 #: includes/admin/settings/class-settings.php:403
+#, php-format
 msgid ""
 "Show pretty affiliate referrals to affiliates. For example: <strong>%s or "
 "%s</strong>"
@@ -1756,13 +1839,12 @@ msgstr ""
 "<strong>%s atau %s</strong>"
 
 #: includes/admin/settings/class-settings.php:407
-#, fuzzy
 msgid "Credit Last Referrer"
-msgstr "Edit Referral"
+msgstr "Kredit Referrer Terakhir"
 
 #: includes/admin/settings/class-settings.php:408
 msgid "Credit the last affiliate who referred the customer."
-msgstr ""
+msgstr "Mengkreditkan affiliate terakhir yang memperkenalkan pelanggan."
 
 #: includes/admin/settings/class-settings.php:413
 msgid "Should referrals be based on a percentage or flat rate amounts?"
@@ -1863,7 +1945,7 @@ msgid "Integrations"
 msgstr "Integrasi"
 
 #: includes/admin/settings/class-settings.php:483
-#, fuzzy
+#, php-format
 msgid ""
 "Choose the integrations to enable. If you are not using any of these, you "
 "may use the <strong>[affiliate_conversion_script]</strong> shortcode to "
@@ -1871,18 +1953,17 @@ msgid ""
 "\">documentation</a> for help using this."
 msgstr ""
 "Pilih integrasi untuk diaktifkan. Jika anda tidak gunakan fungsi ini, anda "
-"boleh gunakan short code <strong>[affiliate_conversion_script]</strong> "
-"untuk menjejak dan mencipta referral. Untuk bantuan penggunaan sila rujuk <a "
-"href=\"%s\" target=\"_blank\">dokumentasi</a>"
+"boleh gunakan shortcode <strong>[affiliate_conversion_script]</strong> untuk "
+"menjejak dan mencipta referral. Untuk bantuan penggunaan sila rujuk <a href="
+"\"%s\" target=\"_blank\">dokumentasi</a>"
 
 #: includes/admin/settings/class-settings.php:493
-#, fuzzy
 msgid "Disable All Emails"
-msgstr "Matikan referral"
+msgstr "Matikan Semua E-mel"
 
 #: includes/admin/settings/class-settings.php:494
 msgid "Should all email notifications be disabled?"
-msgstr ""
+msgstr "Perlukah semua pemberitahuan e-mel dimatikan?"
 
 #: includes/admin/settings/class-settings.php:498
 msgid "Logo"
@@ -1962,6 +2043,7 @@ msgstr ""
 "HTML diterima. Templat tag yang disediakan:"
 
 #: includes/admin/settings/class-settings.php:535
+#, php-format
 msgid "A new affiliate has registered on your site, %s"
 msgstr "Affiliate baru telah mendaftar di laman web anda, %s"
 
@@ -2005,6 +2087,7 @@ msgstr "Tahniah {name}!"
 
 #: includes/admin/settings/class-settings.php:547
 #: includes/emails/actions.php:111
+#, php-format
 msgid "Your affiliate application on %s has been accepted!"
 msgstr "Permohonan affiliate anda di %s telah diterima!"
 
@@ -2045,6 +2128,7 @@ msgid "You have been awarded a new referral of"
 msgstr "Anda telah dapat referral baru"
 
 #: includes/admin/settings/class-settings.php:559
+#, php-format
 msgid "on %s!"
 msgstr "pada %s!"
 
@@ -2093,34 +2177,41 @@ msgid ""
 "The default referral URL shown in the affiliate area. Also changes the URL "
 "shown in the referral URL generator and {referral_url} email tag."
 msgstr ""
+"Format rujukan URL ditunjukkan di dalam kawasan affiliate. Juga perubahan "
+"URL yang ditunjukkan dalam penjana URL penaja dan {rujukan url} tag e-mel."
 
 #: includes/admin/settings/class-settings.php:587
 msgid "Enable reCAPTCHA"
-msgstr ""
+msgstr "Hidupkan reCAPTCHA"
 
 #: includes/admin/settings/class-settings.php:588
 msgid ""
 "Would you like to prevent bots from registering affiliate accounts using "
 "Google reCAPTCHA?"
 msgstr ""
+"Adakah anda ingin untuk mengelakkan bots daripada mendaftar akaun affiliate "
+"menggunakan Google reCAPTCHA?"
 
 #: includes/admin/settings/class-settings.php:592
 msgid "reCAPTCHA Site Key"
-msgstr ""
+msgstr "reCAPTCHA Site Key"
 
 #: includes/admin/settings/class-settings.php:593
 msgid "This is used to identify your site to Google reCAPTCHA."
 msgstr ""
+"Ini digunakan untuk mengenal pasti laman web anda untuk Google reCAPTCHA."
 
 #: includes/admin/settings/class-settings.php:597
 msgid "reCAPTCHA Secret Key"
-msgstr ""
+msgstr "reCAPTCHA Secret Key"
 
 #: includes/admin/settings/class-settings.php:598
 msgid ""
 "This is used for communication between your site and Google reCAPTCHA. Be "
 "sure to keep it a secret."
 msgstr ""
+"Ini digunakan untuk komunikasi antara laman anda dan Google reCAPTCHA. "
+"Pastikan anda menyimpan rahsia."
 
 #: includes/admin/settings/class-settings.php:602
 msgid "Reject Unpaid Referrals on Refund?"
@@ -2169,13 +2260,15 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:617
 msgid "Enable Debug Mode?"
-msgstr ""
+msgstr "Membolehkan Mod Debug?"
 
 #: includes/admin/settings/class-settings.php:618
 msgid ""
 "Check this box to enable debug mode. This will turn on error logging for the "
 "referral process to help identify problems."
 msgstr ""
+"Tandakan kotak ini untuk membolehkan mod debug. Ini akan menghidupkan log "
+"ralat untuk proses rujukan bagi membantu mengenal pasti masalah."
 
 #: includes/admin/settings/class-settings.php:622
 msgid "Remove Data on Uninstall?"
@@ -2296,6 +2389,7 @@ msgid "Activate License"
 msgstr "Aktifkan Lesen"
 
 #: includes/admin/settings/class-settings.php:939
+#, php-format
 msgid ""
 "The callback function used for the <strong>%s</strong> setting is missing."
 msgstr ""
@@ -2335,7 +2429,7 @@ msgstr "Tarikh Mendaftar"
 #: includes/admin/tools/export/class-export-referrals.php:67
 #: templates/dashboard-tab-stats.php:56
 msgid "Campaign"
-msgstr ""
+msgstr "Kempen"
 
 #: includes/admin/tools/export/class-export.php:173
 msgid "You do not have permission to export data."
@@ -2359,6 +2453,7 @@ msgstr ""
 "kumpulan 100."
 
 #: includes/admin/tools/migration.php:20
+#, php-format
 msgid "Step %d running"
 msgstr "Langkah %d sedang berjalan"
 
@@ -2375,9 +2470,8 @@ msgid "Migration Assistant"
 msgstr "Pembantu Migrasi"
 
 #: includes/admin/tools/tools.php:80
-#, fuzzy
 msgid "Debug Assistant"
-msgstr "Pembantu Migrasi"
+msgstr "Pembantu Debug"
 
 #: includes/admin/tools/tools.php:121
 msgid "Recount Affiliate Stats"
@@ -2417,42 +2511,47 @@ msgid "User Accounts"
 msgstr "Akaun Pengguna"
 
 #: includes/admin/tools/tools.php:185
-#, fuzzy
 msgid ""
 "Use this tool to create affiliate accounts for each of your existing "
 "WordPress user accounts that belong to the selected roles below."
 msgstr ""
 "Gunakan tool ini untuk membuat akaun affiliate untuk setiap akaun pengguna "
-"WordPress anda."
+"WordPress anda yang sedia ada di dalam peranan yang tertera di bawah."
 
 #: includes/admin/tools/tools.php:186
 msgid ""
 "<strong>NOTE:</strong> Users that already have affiliate accounts will be "
 "skipped. Duplicate accounts will not be created."
 msgstr ""
+"<strong>NOTA:</strong> Pengguna yang sudah mempunyai akaun affiliate akan "
+"diabaikan. Akaun pendua tidak akan diwujudkan."
 
 #: includes/admin/tools/tools.php:188
-#, fuzzy
 msgid "Select User Roles"
-msgstr "Pilih Ruang"
+msgstr "Pilih Peranan Pengguna"
 
 #: includes/admin/tools/tools.php:201
-#, fuzzy
 msgid "Create Affiliate Accounts for Users"
-msgstr "Buat Akaun Affiliate"
+msgstr "Buat Akaun Affiliate untuk Pengguna"
 
 #: includes/admin/tools/tools.php:206
+#, php-format
 msgid ""
 "<strong>NOTE:</strong> WordPress 4.4 or newer is required to use the User "
 "Accounts migration tool. <a href=\"%s\" aria-label=\"Update WordPress now"
 "\">Update WordPress now</a>."
 msgstr ""
+"<strong> Nota: </ strong> WordPress 4.4 atau yang lebih baru diperlukan "
+"untuk penggunaan alat migrasi User Accounts. <a href=\"%s\" aria-label="
+"\"Kemaskini Wordpress Anda\">Kemaskini Wordpress Anda</a>."
 
 #: includes/admin/tools/tools.php:208
 msgid ""
 "<strong>NOTE:</strong> WordPress 4.4 or newer is required to use the User "
 "Accounts migration tool."
 msgstr ""
+"<strong>NOTA:</strong>WordPress 4.4 atau yang lebih baru diperlukan untuk "
+"digunakan alat migrasi User Accounts."
 
 #: includes/admin/tools/tools.php:217
 #, fuzzy
@@ -2516,13 +2615,12 @@ msgid "Export referrals to a CSV file."
 msgstr "Eksport referral kepada fail CSV."
 
 #: includes/admin/tools/tools.php:303
-#, fuzzy
 msgid ""
 "To search for an affiliate, enter the affiliate's login name, first name, or "
 "last name. Leave blank to export referrals for all affiliates."
 msgstr ""
-"Untuk mencri affiliate, masukkan nama login affiliate, nama pertama, atau "
-"nama kahir. Biarkan kosong untuk eksport referral kepada semua affiliate.,"
+"Untuk mencari affiliate, masukkan nama login affiliate, nama pertama, atau "
+"nama akhir. Biarkan kosong untuk eksport referral kepada semua affiliate.,"
 
 #: includes/admin/tools/tools.php:315
 msgid "Export Settings"
@@ -2555,30 +2653,32 @@ msgstr "Import"
 
 #: includes/admin/tools/tools.php:363
 msgid "Debug Log"
-msgstr ""
+msgstr "Log Debug"
 
 #: includes/admin/tools/tools.php:366
 msgid "Use this tool to help debug referral tracking."
-msgstr ""
+msgstr "Gunakan alat ini untuk membantu pengesanan rujukan debug."
 
 #: includes/admin/tools/tools.php:368
 msgid "Clear Debug Log"
-msgstr ""
+msgstr "Memadam Log Debug"
+
+#: includes/admin/user-profile.php:14
+#: includes/integrations/extras/class-exchange-feature.php:195
+msgid "AffiliateWP"
+msgstr "AffiliateWP"
 
 #: includes/admin/user-profile.php:17
-#, fuzzy
 msgid "Affiliate Registration Status"
-msgstr "Pendaftaran Affiliate"
+msgstr "Status Pendaftaran Affiliate"
 
 #: includes/admin/user-profile.php:35
-#, fuzzy
 msgid "Not Registered"
-msgstr "Tarikh Mendaftar"
+msgstr "Tidak Berdaftar"
 
 #: includes/admin/user-profile.php:41
-#, fuzzy
 msgid "Affiliate Actions"
-msgstr "Pergi ke Setting AffiliateWP"
+msgstr "Tindakan Affiliate"
 
 #: includes/admin/user-profile.php:48 templates/register.php:116
 msgid "Register"
@@ -2669,11 +2769,11 @@ msgstr "Anda boleh masukkan nombor ID referral dengan awalan 'referral:'"
 
 #: includes/admin/visits/screen-options.php:22
 msgid "Number of visits per page:"
-msgstr ""
+msgstr "Bilangan lawatan per halaman:"
 
 #: includes/admin/visits/visits.php:42
 msgid "Filter by status"
-msgstr ""
+msgstr "Pilih status"
 
 #: includes/admin/visits/visits.php:46
 #, fuzzy
@@ -2709,6 +2809,7 @@ msgid "Percentage (%)"
 msgstr "Peratusan (%)"
 
 #: includes/affiliate-functions.php:404
+#, php-format
 msgid "Flat %s"
 msgstr "Tetap %s"
 
@@ -2810,6 +2911,8 @@ msgstr ""
 #: includes/class-register.php:86
 msgid "Invalid username. Usernames must include at least one letter"
 msgstr ""
+"Nama pengguna tidak sah. Nama pengguna mesti mengandungi sekurang-kurangnya "
+"satu huruf"
 
 #: includes/class-register.php:90
 msgid "Email address already taken"
@@ -2833,7 +2936,7 @@ msgstr "Sila bersetuju dengan terma dan syarat penggunaan kami"
 
 #: includes/class-register.php:129
 msgid "Please verify that you are not a robot"
-msgstr ""
+msgstr "Sila sahkan bahawa anda bukan robot"
 
 #: includes/class-register.php:133
 msgid "Nice try honey bear, don't touch our honey"
@@ -2852,23 +2955,20 @@ msgid "Please enter a website URL"
 msgstr "Sila masukkan URL website anda"
 
 #: includes/class-register.php:402
-#, fuzzy
 msgid "Add as Affiliate"
-msgstr "Tambah Affiliate"
+msgstr "Tambah sebagai Affiliate"
 
 #: includes/class-register.php:404
-#, fuzzy
 msgid "Add the user as an affiliate."
-msgstr "Anda telah mendaftar sebagai affiliate"
+msgstr "Menambah pengguna sebagai affiliate."
 
 #: includes/class-register.php:409
-#, fuzzy
 msgid "Disable Affiliate Email"
-msgstr "Matikan referral"
+msgstr "Matikan Email Affiliate "
 
 #: includes/class-register.php:411
 msgid "Disable the application accepted email sent to the affiliate."
-msgstr ""
+msgstr "Matikan e-mel permohonan diterima yang dihantar kepada affiliate."
 
 #: includes/class-visits-graph.php:126
 msgid "Converted Visits"
@@ -2887,42 +2987,52 @@ msgid "A new affiliate has registered on your site, "
 msgstr "Affiliate baru telah mendaftar di laman web anda,"
 
 #: includes/emails/actions.php:47
+#, php-format
 msgid "Name: %s"
 msgstr "Nama: %s"
 
 #: includes/emails/actions.php:50
+#, php-format
 msgid "Website URL: %s"
 msgstr "URL Laman Web: %s"
 
 #: includes/emails/actions.php:54
+#, php-format
 msgid "Promotion method: %s"
 msgstr "Kaedah promosi: %s"
 
 #: includes/emails/actions.php:58
+#, php-format
 msgid "Review pending applications: %s"
 msgstr "Semak permohonan yang belum selesai: %s"
 
 #: includes/emails/actions.php:110 includes/emails/actions.php:236
+#, php-format
 msgid "Congratulations %s!"
 msgstr "Tahniah %s!"
 
 #: includes/emails/actions.php:112
+#, php-format
 msgid "Log into your affiliate area at %s"
 msgstr "Log masuk ruangan affiluate anda di %s"
 
 #: includes/emails/actions.php:153
+#, php-format
 msgid "Hi %s!"
 msgstr "Hai %s!"
 
 #: includes/emails/actions.php:192
+#, php-format
 msgid "Hi %s,"
 msgstr "Hai %s,"
 
 #: includes/emails/actions.php:237
+#, php-format
 msgid "You have been awarded a new referral of %s on %s!"
 msgstr "Anda telah mendapat referral baru daripada %s pada %s!"
 
 #: includes/emails/actions.php:238
+#, php-format
 msgid ""
 "log into your affiliate area to view your earnings or disable these "
 "notifications: %s"
@@ -2967,9 +3077,8 @@ msgid "The promo method used by the affiliate"
 msgstr "Kaedah promosi yang digunakan oleh affiliate"
 
 #: includes/emails/class-affwp-emails.php:447
-#, fuzzy
 msgid "The reason an affiliate area was rejected"
-msgstr "Permohonan affiliate telah ditolak"
+msgstr "Sebab ruangan affiliate ditolak"
 
 #: includes/emails/class-affwp-emails.php:452
 msgid "The affiliate login URL to your website"
@@ -2992,9 +3101,8 @@ msgid "The affiliate's ID"
 msgstr "ID Affiliate"
 
 #: includes/emails/functions.php:121
-#, fuzzy
 msgid "No reason provided"
-msgstr "Tiada referral direkodkan lagi"
+msgstr "Tiada sebab diberikan"
 
 #: includes/integrations/class-edd.php:337
 #: includes/integrations/class-gravityforms.php:109
@@ -3004,6 +3112,7 @@ msgstr "Tiada referral direkodkan lagi"
 #: includes/integrations/class-sproutinvoices.php:53
 #: includes/integrations/class-woocommerce.php:184
 #: includes/integrations/class-zippycourses.php:263
+#, php-format
 msgid "Referral #%d for %s recorded for %s"
 msgstr "Referral #%d untuk %s direkodkan untuk %s"
 
@@ -3060,6 +3169,7 @@ msgstr "Kadar Affiliate:"
 
 #: includes/integrations/class-edd.php:608
 #: includes/integrations/class-zippycourses.php:83
+#, php-format
 msgid "Disable referrals on this %s"
 msgstr "Matikan referral pada %s ini"
 
@@ -3104,32 +3214,32 @@ msgid "Purchase Amount"
 msgstr "Amaun Pembelian"
 
 #: includes/integrations/class-formidablepro.php:200
+#, php-format
 msgid "AffiliateWP: Referral #%d for %s recorded for %s"
 msgstr "AffiliateWP: Referral #%d untuk %s telah direkodkan untuk %s"
 
 #: includes/integrations/class-formidablepro.php:225
+#, php-format
 msgid "AffiliateWP: Referral #%d for %s for %s rejected"
 msgstr "AffiliateWP: Referral #%d untuk %s untuk %s telah ditolak"
 
 #: includes/integrations/class-gravityforms.php:131
 #: includes/integrations/class-sproutinvoices.php:76
+#, php-format
 msgid "Referral #%d for %s for %s rejected"
 msgstr "Referral #%d untuk %s untuk %s telah ditolak"
 
 #: includes/integrations/class-gravityforms.php:172
-#, fuzzy
 msgid "Enable affiliate referral creation for this form"
-msgstr "Jenis kadar referral affiliate"
+msgstr "Aktifkan penciptaan rujukan affiliate untuk borang ini"
 
 #: includes/integrations/class-gravityforms.php:176
-#, fuzzy
 msgid "Allow referrals"
-msgstr "Matikan referral"
+msgstr "Benarkan referral"
 
 #: includes/integrations/class-jigoshop.php:153
-#, fuzzy
 msgid "Affiliate Data"
-msgstr "Jenis kadar referral affiliate"
+msgstr "Data Affiliate"
 
 #: includes/integrations/class-memberpress.php:138
 #: includes/integrations/class-rcp.php:338
@@ -3139,19 +3249,16 @@ msgid "Affiliate Rate"
 msgstr "Jenis kadar referral affiliate"
 
 #: includes/integrations/class-memberpress.php:167
-#, fuzzy
 msgid "Disable referrals on this membership"
-msgstr "Matikan referral pada %s ini"
+msgstr "Matikan referrals di keahlian ini"
 
 #: includes/integrations/class-ninja-forms.php:142
-#, fuzzy
 msgid "Allow Referrals"
-msgstr "Referral"
+msgstr "Benarkan Referral"
 
 #: includes/integrations/class-ninja-forms.php:143
-#, fuzzy
 msgid "Enable affiliate referral creation for this form?"
-msgstr "Jenis kadar referral affiliate"
+msgstr "Aktifkan penciptaan rujukan affiliate untuk borang ini?"
 
 #: includes/integrations/class-pmp.php:356
 #: includes/integrations/class-zippycourses.php:55
@@ -3160,7 +3267,7 @@ msgid "Affiliate Settings"
 msgstr "Pergi ke Setting AffiliateWP"
 
 #: includes/integrations/class-pmp.php:365
-#, fuzzy
+#, fuzzy, php-format
 msgid ""
 "The membership-level referral rate, such as 20 for 20%%. Affiliate-level "
 "referral rates will override this value. If left blank, the site default "
@@ -3176,7 +3283,7 @@ msgstr "Matikan referral"
 
 #: includes/integrations/class-pmp.php:372
 msgid "Check to disable per-membership referrals."
-msgstr ""
+msgstr "Semak rujukan untuk melumpuhkan setiap keahlian."
 
 #: includes/integrations/class-rcp.php:342
 #: includes/integrations/class-rcp.php:364
@@ -3360,43 +3467,47 @@ msgid "Russian Ruble"
 msgstr "Ruble Rusia"
 
 #: includes/misc-functions.php:61
+msgid "Saudi Arabian Riyal"
+msgstr "Arab Saudi Riyal"
+
+#: includes/misc-functions.php:62
 msgid "Singapore Dollar"
 msgstr "Dolar Singapura"
 
-#: includes/misc-functions.php:62
+#: includes/misc-functions.php:63
 #, fuzzy
 msgid "South African Rand"
 msgstr "Rand Afrika Selatan"
 
-#: includes/misc-functions.php:63
+#: includes/misc-functions.php:64
 msgid "South Korean Won"
 msgstr "Won Korea Selatan"
 
-#: includes/misc-functions.php:64
+#: includes/misc-functions.php:65
 msgid "Swedish Krona"
 msgstr "Krona Sweden"
 
-#: includes/misc-functions.php:65
+#: includes/misc-functions.php:66
 msgid "Swiss Franc"
 msgstr "Franc Switzerland"
 
-#: includes/misc-functions.php:66
+#: includes/misc-functions.php:67
 msgid "Taiwan New Dollars"
 msgstr "Dolar Baharu Taiwan"
 
-#: includes/misc-functions.php:67
+#: includes/misc-functions.php:68
 msgid "Thai Baht"
 msgstr "Bath Thailand"
 
-#: includes/misc-functions.php:68
+#: includes/misc-functions.php:69
 msgid "Turkish Lira"
 msgstr "Lira Turki"
 
-#: includes/misc-functions.php:69
+#: includes/misc-functions.php:70
 msgid "United Arab Emirates Dirham"
 msgstr "Dirham United Arab Emirates"
 
-#: includes/misc-functions.php:70
+#: includes/misc-functions.php:71
 msgid "Vietnamese Dong"
 msgstr "Dong Vietnam"
 
@@ -3409,9 +3520,8 @@ msgstr ""
 "ditandakan sebagai Telah Dibayar."
 
 #: includes/scripts.php:63
-#, fuzzy
 msgid "Are you sure you want to delete this referral?"
-msgstr "Anda pasti anda ingin memadam kreatif ini?"
+msgstr "Anda pasti anda ingin memadam referral ini?"
 
 #: templates/creative.php:39
 msgid "Copy and paste the following:"
@@ -3445,7 +3555,7 @@ msgstr "Aktifkan Notifikasi Referral Baru"
 msgid "Save Profile Settings"
 msgstr "Simpan Tetapan Profil"
 
-#: templates/dashboard-tab-stats.php:3 templates/dashboard.php:42
+#: templates/dashboard-tab-stats.php:3 templates/dashboard.php:40
 msgid "Statistics"
 msgstr "Statistik"
 
@@ -3455,29 +3565,33 @@ msgstr "Kadar Komisyen"
 
 #: templates/dashboard-tab-stats.php:58
 msgid "Unique Links"
-msgstr ""
+msgstr "Pautan Unik"
 
 #: templates/dashboard-tab-stats.php:68
 msgid "None set"
-msgstr ""
+msgstr "Tiada set"
 
 #: templates/dashboard-tab-stats.php:77
 msgid "You have no referrals or visits that included a campaign name."
 msgstr ""
+"Anda tidak mempunyai rujukan atau kunjungan yang menyertakan nama kempen."
 
 #: templates/dashboard-tab-urls.php:3
 msgid "Referral URL Generator"
 msgstr "Penjana URL Referral"
 
 #: templates/dashboard-tab-urls.php:8
+#, php-format
 msgid "Your affiliate ID is: <strong>%s</strong>"
 msgstr "ID affiliate anda adalah: <strong>%s</strong>"
 
 #: templates/dashboard-tab-urls.php:10
+#, php-format
 msgid "Your affiliate username is: <strong>%s</strong>"
 msgstr "Username affiliate anda adalah: <strong>%s</strong>"
 
 #: templates/dashboard-tab-urls.php:13
+#, php-format
 msgid "Your referral URL is: <strong>%s</strong>"
 msgstr "URL referral anda adalah: <strong>%s</strong>"
 
@@ -3495,7 +3609,7 @@ msgstr "URL Laman"
 
 #: templates/dashboard-tab-urls.php:23
 msgid "Campaign Name (optional)"
-msgstr ""
+msgstr "Nama Kempen (pilihan)"
 
 #: templates/dashboard-tab-urls.php:28
 msgid "Referral URL"
@@ -3519,37 +3633,40 @@ msgid ""
 "referrer, and column three indicates whether the visit converted into a "
 "referral."
 msgstr ""
+"Kolum satu menyenaraikan URL lawatan dalam format relatif, kolum dua senarai "
+"referrer dan kolum tiga menunjukkan sama ada lawatan ditukar menjadi "
+"referral."
 
 #: templates/dashboard-tab-visits.php:44
-#, fuzzy
+#, php-format
 msgid "Visit converted: %s"
-msgstr "Telah Ditukar (Converted)"
+msgstr "Lawatan ditukarkan:% s"
 
 #: templates/dashboard-tab-visits.php:54
 msgid "You have not received any visits yet."
 msgstr "Anda tidak menerima sebarang lawatan lagi."
 
-#: templates/dashboard.php:9
+#: templates/dashboard.php:7
 msgid "Your affiliate account is pending approval"
 msgstr "Akaun affiliate anda masih belum disahkan lagi"
 
-#: templates/dashboard.php:13
+#: templates/dashboard.php:11
 msgid "Your affiliate account is not active"
 msgstr "Akaun affiliate anda tidak aktif"
 
-#: templates/dashboard.php:17
+#: templates/dashboard.php:15
 msgid "Your affiliate account request has been rejected"
 msgstr "Permohonan akaun affiliate anda telah ditolak"
 
-#: templates/dashboard.php:27
+#: templates/dashboard.php:25
 msgid "Your affiliate profile has been updated"
 msgstr "Profil affiliate anda telah dikemas kini"
 
-#: templates/dashboard.php:36
+#: templates/dashboard.php:34
 msgid "Affiliate URLs"
 msgstr "URL Affiliate"
 
-#: templates/dashboard.php:48
+#: templates/dashboard.php:46
 msgid "Graphs"
 msgstr "Graf"
 
@@ -3599,34 +3716,11 @@ msgid "Confirm Password"
 msgstr "Sahkan Kata Kunci"
 
 #: templates/register.php:96
+#, php-format
 msgid "Agree to our <a href=\"%s\" target=\"_blank\">Terms of Use</a>"
 msgstr ""
 "Setuju dengan <a href=\"%s\" target=\"_blank\">Terma dan Syarat Penggunaan </"
 "a> kami"
-
-#. Description of the plugin/theme
-msgid "Affiliate Plugin for WordPress"
-msgstr ""
-
-#: includes/admin/affiliates/delete.php:47
-msgctxt "Affiliate ID, affiliate name"
-msgid "ID #%d: %s"
-msgstr "ID #%d: %s"
-
-#: includes/admin/class-notices.php:19
-msgctxt "Integrations"
-msgid "Dismiss Notice"
-msgstr ""
-
-#: includes/admin/class-notices.php:194 includes/admin/class-notices.php:202
-msgctxt "License"
-msgid "Dismiss Notice"
-msgstr ""
-
-#: includes/admin/creatives/delete.php:21
-msgctxt "Creative ID, creative name"
-msgid "Creative ID #%d: %s"
-msgstr "ID Kreatif #%d: %s"
 
 #~ msgid "Delete affiliate's user accounts as well?"
 #~ msgstr "Padam akaun pengguna affiliate sekali?"
@@ -3761,12 +3855,3 @@ msgstr "ID Kreatif #%d: %s"
 #~ msgstr ""
 #~ "Affiliate yang masih menunggu tidak lagi boleh mengakses dashboard "
 #~ "affiliate sehinga mereka disahkan."
-
-#~ msgid "Accept Affiliate"
-#~ msgstr "Terima Affiliate"
-
-#~ msgid "Reject Affiliate"
-#~ msgstr "Tolak Affiliate"
-
-#~ msgid "AffiliateWP"
-#~ msgstr "AffiliateWP"

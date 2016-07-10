@@ -21,6 +21,7 @@ function affwp_visits_admin() {
 
 	$visits_table = new AffWP_Visits_Table();
 	$visits_table->prepare_items();
+	$affiliate_name = ! empty( $_REQUEST['user_name'] ) ? $_REQUEST['user_name'] : '';
 	$from   = ! empty( $_REQUEST['filter_from'] )   ? $_REQUEST['filter_from']   : '';
 	$to     = ! empty( $_REQUEST['filter_to'] )     ? $_REQUEST['filter_to']     : '';
 	$status = ! empty( $_REQUEST['filter_status'] ) ? $_REQUEST['filter_status'] : '';
@@ -32,7 +33,7 @@ function affwp_visits_admin() {
 		<form id="affwp-visits-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp' ); ?>">
 			<?php $visits_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-affiliates' ); ?>
 			<span class="affwp-ajax-search-wrap">
-				<input type="text" name="user_name" id="user_name" class="affwp-user-search" data-affwp-status="any" autocomplete="off" placeholder="<?php _e( 'Affiliate name', 'affiliate-wp' ); ?>" />
+				<input type="text" name="user_name" id="user_name" class="affwp-user-search" value="<?php echo esc_attr( $affiliate_name ); ?>" data-affwp-status="any" autocomplete="off" placeholder="<?php _e( 'Affiliate name', 'affiliate-wp' ); ?>" />
 			</span>
 			<input type="hidden" name="user_id" id="user_id" value=""/>
 			<input type="hidden" name="page" value="affiliate-wp-visits" />
@@ -296,15 +297,16 @@ class AffWP_Visits_Table extends WP_List_Table {
 		$per_page = $this->get_items_per_page( 'affwp_edit_visits_per_page', $this->per_page );
 
 		$args = array(
-			'number'       => $this->per_page,
-			'offset'       => $this->per_page * ( $page - 1 ),
-			'affiliate_id' => $affiliate_id,
-			'referral_id'  => $referral_id,
-			'date'         => $date,
-			'campaign'     => $campaign,
-			'orderby'      => $orderby,
-			'order'        => $order,
-			'search'       => $search,
+			'number'          => $this->per_page,
+			'offset'          => $this->per_page * ( $page - 1 ),
+			'affiliate_id'    => $affiliate_id,
+			'referral_id'     => $referral_id,
+			'date'            => $date,
+			'campaign'        => $campaign,
+			'orderby'         => $orderby,
+			'order'           => $order,
+			'search'          => $search,
+			'referral_status' => $status
 		);
 
 		$this->total_count = affiliate_wp()->visits->count( $args );

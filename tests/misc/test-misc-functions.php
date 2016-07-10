@@ -28,26 +28,17 @@ class Misc_Functions_Tests extends WP_UnitTestCase {
 	 * @covers affwp_format_amount()
 	 */
 	public function test_format_amount_floatval_remains_floatval_with_comma_thousands_seperator() {
-		$this->markTestSkipped( 'Lexical variable errors.' );
 		affiliate_wp()->settings->set( array(
 			'thousands_separator' => ','
 		) );
 
-		add_filter( 'affwp_format_amount', array( $this, 'retrieve_amount' ), 10, 2 );
+		$object = $this;
+
+		add_filter( 'affwp_format_amount', function ( $formatted, $amount ) use ( $object ) {
+			$object->assertSame( 'double', gettype( $amount ) );
+		}, 10, 2 );
 
 		$amount = affwp_format_amount( floatval( "1,999.99" ), true );
-
-		$this->assertSame( 'double', gettype( $this->amount ) );
-	}
-
-	/**
-	 * Retrieves amount from the 'affwp_format_amount' filter.
-	 *
-	 * @since 1.8
-	 */
-	public function retrieve_amount( $formatted, $amount ) {
-		$this->amount = $amount;
-		return $formatted;
 	}
 
 	/**

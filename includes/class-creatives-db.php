@@ -21,7 +21,7 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 	 * @access public
 	 * @var string
 	 */
-	public $query_object_type = 'AffWP_Creative';
+	public $query_object_type = 'AffWP\Creative';
 
 	/**
 	 * Get things started
@@ -50,8 +50,8 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 	 *
 	 * @see Affiliate_WP_DB::get_core_object()
 	 *
-	 * @param int|object|AffWP_Creative $creative Creative ID or object.
-	 * @return AffWP_Creative|null Creative object, null otherwise.
+	 * @param int|object|AffWP\Creative $creative Creative ID or object.
+	 * @return AffWP\Creative|null Creative object, null otherwise.
 	 */
 	public function get_object( $creative ) {
 		return $this->get_core_object( $creative, $this->query_object_type );
@@ -165,6 +165,11 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 				);
 
 			}
+		}
+
+		// Convert to AffWP\Creative objects.
+		if ( is_array( $results ) ) {
+			$results = array_map( 'affwp_get_creative', $results );
 		}
 
 		wp_cache_add( $cache_key, $results, $this->cache_group, HOUR_IN_SECONDS );

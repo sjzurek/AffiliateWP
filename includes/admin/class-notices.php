@@ -1,15 +1,35 @@
 <?php
-
+/**
+ * AffiliateWP Admin Notices class
+ *
+ * @since 1.0
+ */
 class Affiliate_WP_Admin_Notices {
 
+	/**
+	 * Constructor.
+	 *
+	 * @since 1.0
+	 * @access public
+	 */
 	public function __construct() {
 
 		add_action( 'admin_notices', array( $this, 'show_notices' ) );
 		add_action( 'affwp_dismiss_notices', array( $this, 'dismiss_notices' ) );
 	}
 
-
+	/**
+	 * Displays admin notices.
+	 *
+	 * @since 1.0
+	 * @since 1.8.3 Notices are hidden for users lacking the 'manage_affiliates' capability
+	 * @access public
+	 */
 	public function show_notices() {
+		// Don't display notices for users who can't manage affiliates.
+		if ( ! current_user_can( 'manage_affiliates' ) ) {
+			return;
+		}
 
 		$integrations = affiliate_wp()->integrations->get_enabled_integrations();
 
@@ -208,7 +228,7 @@ class Affiliate_WP_Admin_Notices {
 	}
 
 	/**
-	 * Dismiss admin notices when Dismiss links are clicked
+	 * Dismisses admin notices when Dismiss links are clicked.
 	 *
 	 * @since 1.7.5
 	 * @access public
@@ -248,4 +268,6 @@ class Affiliate_WP_Admin_Notices {
 		}
 	}
 }
+
 new Affiliate_WP_Admin_Notices;
+

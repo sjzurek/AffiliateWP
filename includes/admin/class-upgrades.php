@@ -47,7 +47,12 @@ class Affiliate_WP_Upgrades {
 
 		if ( version_compare( $version, '1.7.14', '<' ) ) {
 			$this->v1714_upgrades();
-		}	
+		}
+
+		// Inconsistency between current and saved version.
+		if ( version_compare( $version, AFFILIATEWP_VERSION, '<>' ) ) {
+			$this->upgraded = true;
+		}
 
 		// If upgrades have occurred
 		if ( $this->upgraded ) {

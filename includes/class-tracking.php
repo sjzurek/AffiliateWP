@@ -54,6 +54,7 @@ class Affiliate_WP_Tracking {
 		add_action( 'wp_ajax_affwp_check_js', array( $this, 'check_js' ) );
 		add_action( 'wp_ajax_nopriv_affwp_check_js', array( $this, 'check_js' ) );
 
+		add_filter( 'paginate_links', array( $this, 'strip_referral_from_paged_urls' ), 100 );
 	}
 
 	/**
@@ -744,4 +745,33 @@ class Affiliate_WP_Tracking {
 		
 	}
 
+	/**
+	 * Strips pretty referral bits from pagination links.
+	 *
+	 * @since 1.9
+	 * @access public
+	 *
+	 * @param string $link Pagination link.
+	 * @return string (Maybe) filtered pagination link.
+	 */
+	public function strip_referral_from_paged_urls( $link ) {
+		// Only mess with $link if there's pagination.
+		preg_match( '/page\/\d\/?/', $link, $matches );
+
+		if ( ! empty( $matches[0] ) ) {
+			$referral_var = $this->get_referral_var();
+
+			// Remove a non-pretty referral ID.
+			$link = remove_query_arg( $referral_var, $link );
+
+			// Remove a pretty referral ID or username.
+			preg_match( "/$referral_var\/(\w+)\//", $link, $pretty_matches );
+
+			if ( ! empty( $pretty_matches[0] ) ) {
+				$link = str_replace( $pretty_matches[0], '', $link );
+			}
+		}
+
+		return $link;
+	}
 }

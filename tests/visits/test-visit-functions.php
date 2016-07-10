@@ -90,7 +90,7 @@ class Visit_Functions_Tests extends WP_UnitTestCase {
 	 * @covers affwp_get_visit()
 	 */
 	public function test_get_visit_with_a_valid_visit_id_should_return_a_visit() {
-		$this->assertInstanceOf( 'AffWP_Visit', affwp_get_visit( $this->_visit_id ) );
+		$this->assertInstanceOf( 'AffWP\Visit', affwp_get_visit( $this->_visit_id ) );
 	}
 
 	/**
@@ -106,7 +106,7 @@ class Visit_Functions_Tests extends WP_UnitTestCase {
 	public function test_get_visit_with_a_valid_visit_object_should_return_a_visit() {
 		$visit = affwp_get_visit( $this->_visit_id );
 
-		$this->assertInstanceOf( 'AffWP_Visit', affwp_get_visit( $visit ) );
+		$this->assertInstanceOf( 'AffWP\Visit', affwp_get_visit( $visit ) );
 	}
 
 	/**

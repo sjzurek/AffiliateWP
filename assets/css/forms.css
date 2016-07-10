@@ -140,11 +140,15 @@ p.affwp-error {
 }
 
 #affwp-affiliate-dashboard-visits .referring-url {
-	width: 50%;
+	width: 30%;
 }
 
 #affwp-affiliate-dashboard-visits .referral-status {
-	width: 20%;
+	width: 15%;
+}
+
+#affwp-affiliate-dashboard-visits .visit-date {
+	width: 25%;
 }
 
 #affwp-affiliate-dashboard .affwp-send-notifications-wrap label,

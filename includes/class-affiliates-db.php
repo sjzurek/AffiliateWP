@@ -21,7 +21,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	 * @access public
 	 * @var string
 	 */
-	public $query_object_type = 'AffWP_Affiliate';
+	public $query_object_type = 'AffWP\Affiliate';
 
 	/**
 	 * Get things started
@@ -50,8 +50,8 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	 *
 	 * @see Affiliate_WP_DB::get_core_object()
 	 *
-	 * @param int|object|AffWP_Affiliate $affiliate Affiliate ID or object.
-	 * @return AffWP_Affiliate|null Affiliate object, null otherwise.
+	 * @param int|object|AffWP\Affiliate $affiliate Affiliate ID or object.
+	 * @return AffWP\Affiliate|null Affiliate object, null otherwise.
 	 */
 	public function get_object( $affiliate ) {
 		return $this->get_core_object( $affiliate, $this->query_object_type );
@@ -333,6 +333,11 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 				);
 
 			}
+		}
+
+		// Convert to AffWP\Affiliate objects.
+		if ( is_array( $results ) ) {
+			$results = array_map( 'affwp_get_affiliate', $results );
 		}
 
 		wp_cache_add( $cache_key, $results, $this->cache_group, HOUR_IN_SECONDS );

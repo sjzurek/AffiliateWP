@@ -92,20 +92,6 @@ abstract class Affiliate_WP_DB {
 	}
 
 	/**
-	 * Retrieves an object from an ID.
-	 *
-	 * Sub-classes must override this method and supply context.
-	 *
-	 * @since 1.9
-	 * @access public
-	 * @abstract
-	 *
-	 * @param int $object_id Object ID.
-	 * @return mixed|false Object or false if no object could be retrieved.
-	 */
-	abstract public function get_object( $object_id );
-
-	/**
 	 * Retrieves a value based on column name and row ID.
 	 *
 	 * @access public
@@ -174,6 +160,9 @@ abstract class Affiliate_WP_DB {
 		// White list columns
 		$data = array_intersect_key( $data, $column_formats );
 
+		// Unslash data.
+		$data = wp_unslash( $data );
+
 		// Reorder $column_formats to match the order of columns given in $data
 		$data_keys = array_keys( $data );
 		$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
@@ -205,7 +194,7 @@ abstract class Affiliate_WP_DB {
 	 *
 	 * @access public
 	 *
-	 * @param string $row_id Row ID for the record being updated.
+	 * @param int    $row_id Row ID for the record being updated.
 	 * @param array  $data   Optional. Array of columns and associated data to update. Default empty array.
 	 * @param string $where  Optional. Column to match against in the WHERE clause. If empty, $primary_key
 	 *                       will be used. Default empty.
@@ -236,6 +225,9 @@ abstract class Affiliate_WP_DB {
 
 		// White list columns
 		$data = array_intersect_key( $data, $column_formats );
+
+		// Unslash data.
+		$data = wp_unslash( $data );
 
 		// Reorder $column_formats to match the order of columns given in $data
 		$data_keys = array_keys( $data );
@@ -297,17 +289,17 @@ abstract class Affiliate_WP_DB {
 	 *
 	 * @param object|int $instance Instance or object ID.
 	 * @param string     $class    Object class name.
-	 * @return object|null Object instance, null otherwise.
+	 * @return object|false Object instance, otherwise false.
 	 */
 	protected function get_core_object( $instance, $object_class ) {
 		if ( ! class_exists( $object_class ) ) {
-			return null;
+			return false;
 		}
 
 		if ( $instance instanceof $object_class ) {
 			$_object = $instance;
-		} elseif ( is_object( $instance ) && isset( $instance->{$this->primary_key} ) ) {
-			if ( isset( $object->{$this->primary_key} ) ) {
+		} elseif ( is_object( $instance ) ) {
+			if ( isset( $instance->{$this->primary_key} ) ) {
 				$_object = new $object_class( $instance );
 			} else {
 				$_object = $object_class::get_instance( $instance );
@@ -317,7 +309,7 @@ abstract class Affiliate_WP_DB {
 		}
 
 		if ( ! $_object ) {
-			return null;
+			return false;
 		}
 
 		return $_object;

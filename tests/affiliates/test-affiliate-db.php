@@ -38,6 +38,29 @@ class Affiliate_DB_Tests extends WP_UnitTestCase {
 	/**
 	 * @covers Affiliate_WP_DB_Affiliates::get_affiliates()
 	 */
+	public function test_get_affiliates_should_return_array_of_Affiliate_objects_if_not_count_query() {
+		$this->_set_up_affiliates( 4 );
+
+		$results = affiliate_wp()->affiliates->get_affiliates();
+
+		// Check a random affiliate.
+		$this->assertInstanceOf( 'AffWP\Affiliate', $results[ rand( 0, 3 ) ] );
+	}
+
+	/**
+	 * @covers Affiliate_WP_DB_Affiliates::get_affiliates()
+	 */
+	public function test_get_affiliates_should_return_integer_if_count_query() {
+		$this->_set_up_affiliates( 4 );
+
+		$results = affiliate_wp()->affiliates->get_affiliates( array(), $count = true );
+
+		$this->assertTrue( is_numeric( $results ) );
+	}
+
+	/**
+	 * @covers Affiliate_WP_DB_Affiliates::get_affiliates()
+	 */
 	public function test_get_affiliates_method_should_allow_searching_by_display_name() {
 		$display_name = 'Foo';
 

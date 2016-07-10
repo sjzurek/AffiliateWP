@@ -49,8 +49,6 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 		// Shop page.
 		add_action( 'pre_get_posts', array( $this, 'force_shop_page_for_referrals' ), 5 );
-		add_filter( 'paginate_links', array( $this, 'strip_referral_from_paged_urls' ), 100 );
-
 	}
 
 	/**
@@ -94,6 +92,10 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			}
 
 			$cart_shipping = $this->order->get_total_shipping();
+
+			if ( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				$cart_shipping += $this->order->get_shipping_tax();
+			}
 
 			$items = $this->order->get_items();
 
@@ -546,26 +548,16 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	 * Strips pretty referral bits from pagination links on the Shop page.
 	 *
 	 * @since 1.8
+	 * @since 1.8.1 Skipped for product taxonomies and searches
+	 * @deprecated 1.8.3
+	 * @see Affiliate_WP_Tracking::strip_referral_from_paged_urls()
 	 * @access public
 	 *
 	 * @param string $link Pagination link.
 	 * @return string (Maybe) filtered pagination link.
 	 */
 	public function strip_referral_from_paged_urls( $link ) {
-		if ( ! is_shop() && ! is_paged() ) {
-			return $link;
-		}
-
-		$pagination = preg_match( '/page\/\d\//', $link, $matches );
-
-		if ( ! empty( $matches[0] ) ) {
-			$base = get_permalink( wc_get_page_id( 'shop' ) );
-			if ( $base ) {
-				$link = esc_url( trailingslashit( $base ) . $matches[0] );
-			}
-		}
-
-		return $link;
+		return affiliate_wp()->tracking->strip_referral_from_paged_urls( $link );
 	}
 
 }

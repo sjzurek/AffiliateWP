@@ -25,6 +25,7 @@
 				<th class="visit-url"><?php _e( 'URL', 'affiliate-wp' ); ?></th>
 				<th class="referring-url"><?php _e( 'Referring URL', 'affiliate-wp' ); ?></th>
 				<th class="referral-status"><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
+				<th class="visit-date"><?php _e( 'Date', 'affiliate-wp' ); ?></th>
 			</tr>
 		</thead>
 
@@ -45,13 +46,16 @@
 								<i></i>
 							</span>
 						</td>
+						<td>
+							<?php echo esc_html( mysql2date( 'Y-m-d H:i:s', $visit->date, true ) ); ?>
+						</td>
 					</tr>
 				<?php endforeach; ?>
 
 			<?php else : ?>
 
 				<tr>
-					<td colspan="3"><?php _e( 'You have not received any visits yet.', 'affiliate-wp' ); ?></td>
+					<td colspan="4"><?php _e( 'You have not received any visits yet.', 'affiliate-wp' ); ?></td>
 				</tr>
 
 			<?php endif; ?>

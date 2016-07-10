@@ -1,6 +1,6 @@
 <?php
 /**
- * Objects: Base AffWP_Object class
+ * Objects: Base Object
  *
  * @package AffiliateWP
  * @category Core
@@ -8,13 +8,15 @@
  * @since 1.9
  */
 
+namespace AffWP;
+
 /**
  * Implements a base object to be extended by core objects.
  *
  * @since 1.9
  * @abstract
  */
-abstract class AffWP_Object {
+abstract class Object {
 
 	/**
 	 * Whether the object members have been filled.
@@ -69,7 +71,6 @@ abstract class AffWP_Object {
 			$_object = self::fill_vars( $_object );
 
 			wp_cache_add( $cache_key, $_object, $cache_group );
-
 		} elseif ( empty( $_object->filled ) ) {
 			$_object = self::fill_vars( $_object );
 		}
@@ -82,6 +83,9 @@ abstract class AffWP_Object {
 	 * @since 1.9
 	 * @access public
 	 * @static
+	 *
+	 * @see Object::get_instance()
+	 * @see affwp_clean_item_cache()
 	 *
 	 * @param int $object_id Object ID.
 	 * @return string Cache key for the object type and ID.

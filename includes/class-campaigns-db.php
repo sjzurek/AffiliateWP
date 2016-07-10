@@ -3,15 +3,6 @@
 class Affiliate_WP_Campaigns_DB extends Affiliate_WP_DB {
 
 	/**
-	 * Object type to query for.
-	 *
-	 * @since 1.9
-	 * @access public
-	 * @var string
-	 */
-	public $query_object_type = null;
-
-	/**
 	 * Setup our table name, primary key, and version
 	 *
 	 * This is a read-only VIEW of the visits table
@@ -57,18 +48,6 @@ class Affiliate_WP_Campaigns_DB extends Affiliate_WP_DB {
 
 		return $campaigns;
 
-	}
-
-	/**
-	 * Unused.
-	 *
-	 * @since 1.9
-	 * @access public
-	 *
-	 * @param int|object $object Unused.
-	 */
-	public function get_object( $object ) {
-		_doing_it_wrong( 'get_object', 'The AffiliateWP Campaigns table is a read-only VIEW. There is no object to retrieve.', '1.9' );
 	}
 
 	/**

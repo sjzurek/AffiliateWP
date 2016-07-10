@@ -1,12 +1,11 @@
 <?php
-
 /**
  * Retrieves a visit object.
  *
  * @since 1.9
  *
- * @param int|AffWP_Visit $visit Visit ID or object.
- * @return AffWP_Visit|false Visit object, otherwise false.
+ * @param int|AffWP\Visit $visit Visit ID or object.
+ * @return AffWP\Visit|false Visit object, otherwise false.
  */
 function affwp_get_visit( $visit = null ) {
 
@@ -26,7 +25,7 @@ function affwp_get_visit( $visit = null ) {
  *
  * @since
  *
- * @param int|AffWP_Affiliate $affiliate Optional. Affiliate ID or object. Default is the current affiliate.
+ * @param int|AffWP\Affiliate $affiliate Optional. Affiliate ID or object. Default is the current affiliate.
  * @param array|string        $date      Optional. Array of date data with 'start' and 'end' key/value pairs,
  *                                       or a timestamp. Default empty array.
  * @return int|false Number of visits, otherwise 0|false.
@@ -50,10 +49,12 @@ function affwp_count_visits( $affiliate = 0, $date = array() ) {
 }
 
 /**
- * Deletes a visit record
+ * Deletes a visit record.
  *
  * @since 1.2
- * @return bool
+ *
+ * @param int|AffWP\Visit $visit Visit ID or object.
+ * @return bool True if the visit was successfully deleted, otherwise false.
  */
 function affwp_delete_visit( $visit ) {
 

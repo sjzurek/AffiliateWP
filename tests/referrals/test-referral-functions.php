@@ -94,7 +94,7 @@ class Referral_Functions_Tests extends WP_UnitTestCase {
 	public function test_get_referral_with_valid_referral_object_should_return_a_referral_object() {
 		$referral = affwp_get_referral( $this->_referral_id );
 
-		$this->assertInstanceOf( 'AffWP_Referral', $referral );
+		$this->assertInstanceOf( 'AffWP\Referral', $referral );
 		$this->assertEquals( $this->_referral_id, $referral->referral_id );
 	}
 
@@ -347,7 +347,7 @@ class Referral_Functions_Tests extends WP_UnitTestCase {
 			'affiliate_id' => $this->_affiliate_id
 		) );
 
-		$this->assertInstanceOf( 'AffWP_Referral', affwp_get_referral( $referral_id ) );
+		$this->assertInstanceOf( 'AffWP\Referral', affwp_get_referral( $referral_id ) );
 	}
 
 	/**

@@ -21,7 +21,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	 * @access public
 	 * @var string
 	 */
-	public $query_object_type = 'AffWP_Visit';
+	public $query_object_type = 'AffWP\Visit';
 
 	public function __construct() {
 		global $wpdb;
@@ -44,8 +44,8 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	 *
 	 * @see Affiliate_WP_DB::get_core_object()
 	 *
-	 * @param int|object|AffWP_Visit $visit Visit ID or object.
-	 * @return AffWP_Visit|null Visit object, null otherwise.
+	 * @param int|object|AffWP\Visit $visit Visit ID or object.
+	 * @return AffWP\Visit|null Visit object, null otherwise.
 	 */
 	public function get_object( $visit ) {
 		return $this->get_core_object( $visit, $this->query_object_type );
@@ -264,6 +264,11 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			}
 		}
 
+		// Convert to AffWP\Visit objects.
+		if ( is_array( $results ) ) {
+			$results = array_map( 'affwp_get_visit', $results );
+		}
+
 		wp_cache_add( $cache_key, $results, $this->cache_group, HOUR_IN_SECONDS );
 
 		return $results;
@@ -315,7 +320,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	 * @since 1.9
 	 * @access public
 	 *
-	 * @param int|AffWP_Visit $visit_id Visit ID or object.
+	 * @param int|AffWP\Visit $visit_id Visit ID or object.
 	 * @param array           $data     Optional. Data array. Default empty array.
 	 * @return int|false The visit ID if successfully updated, false otherwise.
 	 */

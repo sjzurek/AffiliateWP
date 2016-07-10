@@ -42,6 +42,18 @@
 			<tr class="form-row form-required">
 
 				<th scope="row">
+					<label for="amount"><?php _e( 'Date', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<input type="text" name="date" id="date" class="affwp-datepicker" autocomplete="off" placeholder="<?php echo esc_attr( date_i18n( 'm/d/y', strtotime( 'today' ) ) ); ?>"/>
+				</td>
+
+			</tr>
+
+			<tr class="form-row form-required">
+
+				<th scope="row">
 					<label for="description"><?php _e( 'Description', 'affiliate-wp' ); ?></label>
 				</th>
 

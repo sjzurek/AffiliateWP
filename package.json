@@ -1,10 +1,10 @@
 {
 	"name": "AffiliateWP",
-	"version": "1.8",
+	"version": "1.8.5",
 	"description": "Affiliate Plugin for WordPress",
 	"homepage": "https://affiliatewp.com/",
 	"author": {
-		"name": "Pippin Williamson and Andrew Munro",
+		"name": "AffiliateWP, LLC",
 		"email": "support@affiliatewp.com",
 		"url": "https://affiliatewp.com/"
 	},

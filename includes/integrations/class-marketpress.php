@@ -2,6 +2,8 @@
 
 class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
+	var $is_version_3 = true;
+
 	/**
 	 * Get things started
 	 *
@@ -10,14 +12,42 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 	*/
 	public function init() {
 
-		$this->context = 'marketpress';
+		$this->context      = 'marketpress';
+		$this->is_version_3 = $this->get_mp_version() == '2.0' ? false : true;
 
-		add_action( 'mp_new_order', array( $this, 'add_pending_referral' ) );
-		add_action( 'mp_order_paid', array( $this, 'mark_referral_complete' ) );
-		add_action( 'trash_mp_order', array( $this, 'revoke_referral_on_delete' ), 10, 2 );
+		if( $this->is_version_3 ){
+			add_action( 'mp_order/new_order', array( $this, 'add_pending_referral' ) );
+			add_action( 'mp_order_order_paid', array( $this, 'mark_referral_complete' ) );
+			add_action( 'mp_order_trashed', array( $this, 'revoke_referral_on_delete' ) );
+		} else {
+			add_action( 'mp_new_order', array( $this, 'add_pending_referral' ) );
+			add_action( 'mp_order_paid', array( $this, 'mark_referral_complete' ) );
+			add_action( 'trash_mp_order', array( $this, 'revoke_referral_on_delete' ), 10, 2 );
+		}
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
+	}
 
+	/**
+	 * Get MarketPress version.
+	 *
+	 * @access  public
+	 */
+	public function get_mp_version() {
+
+		$mp_version = false;
+
+		if ( defined( 'MP_VERSION' ) ) {
+			$mp_version = MP_VERSION;
+		} else {
+			global $mp_version;
+		}
+
+		// Strip out any beta or RC components from version... get base version
+		$mp_version = preg_replace( '/\.\D.*/', '', $mp_version );
+		$mp_version = version_compare( $mp_version, '3.0', '>=' ) ? '3.0' : '2.0';
+
+		return $mp_version;
 	}
 
 	/**
@@ -29,14 +59,38 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 	public function add_pending_referral( $order = array() ) {
 
 		if ( $this->was_referred() ) {
+			$order_post = $order;
+			$order_id   = $order->ID;
 
-			if( 0 == $order->post_author ) {
+			if( $this->is_version_3 ) {
+				$amount         = $order->get_meta( 'mp_order_total' );
+				$cart           = $order->get_meta( 'mp_cart_info' );
+				$items          = wp_list_pluck( $cart->get_items_as_objects(), 'ID' );
+				$tax_total      = $order->get_meta( 'mp_tax_total', 0 );
+				$shipping_total = $order->get_meta( 'mp_shipping_total', 0 );
+				$order_post     = get_post( $order->ID );
+			} else {
+				$amount         = $order->mp_order_total;
+				$items          = $order->mp_cart_info;
+				$tax_total      = $order->mp_tax_total;
+				$shipping_total = $order->mp_shipping_total;
+			}
 
-				$customer_email = $order->mp_shipping_info[ 'email' ];
+			if( 0 == $order_post->post_author ) {
+
+				if( $this->is_version_3 ) {
+
+					$customer_email = $order->get_meta( 'mp_shipping_info->email', '' );
+
+				} else {
+
+					$customer_email = $order->mp_shipping_info[ 'email' ];
+
+				}
 
 			} else {
 
-				$user_id        = $order->post_author;
+				$user_id        = $order_post->post_author;
 				$user           = get_userdata( $user_id );
 				$customer_email = $user->user_email;
 
@@ -52,18 +106,19 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 			}
 
-		    $amount      = $order->mp_order_total;
-			$order_id    = $order->ID;
-		    $description = array();
-		    $items       = $order->mp_cart_info;
+			$description = array();
 
 		    foreach( $items as $item ) {
 
-		        $order_items = $item;
+			    if ( is_array( $item ) ) {
+				    $order_items = $item;
 
-		        foreach( $order_items as $order_item ) {
-		            $description[] .= $order_item['name'];
-		        }
+				    foreach( $order_items as $order_item ) {
+					    $description[] = $order_item['name'];
+				    }
+			    } else {
+				    $description[] = get_the_title( $item );
+			    }
 
 		    }
 
@@ -71,13 +126,13 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
-				$amount -= $order->mp_tax_total;
+				$amount -= $tax_total;
 
 			}
 
 			if( affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 
-				$amount -= $order->mp_shipping_total;
+				$amount -= $shipping_total;
 
 			}
 
@@ -120,7 +175,13 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 	 * @access  public
 	 * @since   1.6
 	*/
-	public function revoke_referral_on_delete( $order_id = 0, $post ) {
+	public function revoke_referral_on_delete( $order ) {
+
+		$order_id = $order;
+
+		if( $this->is_version_3 ){
+			$order_id = $order->ID;
+		}
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
 
@@ -152,9 +213,14 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 		}
 
-		$url = admin_url( 'edit.php?post_type=product&page=marketpress-orders&order_id=' . $reference );
+		$args = array(
+			'post'   => absint( $reference ),
+			'action' => 'edit'
+		);
 
-		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
+		$url = add_query_arg( $args, admin_url( 'post.php' ) );
+
+		return '<a href="' . esc_url( $url ) . '">' . esc_html( $reference ) . '</a>';
 
 	}
 
