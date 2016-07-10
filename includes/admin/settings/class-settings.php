@@ -1119,20 +1119,24 @@ class Affiliate_WP_Settings {
 
 	public function activate_license() {
 
-		if( ! isset( $_POST['affwp_settings'] ) )
+		if( ! isset( $_POST['affwp_settings'] ) ) {
 			return;
+		}
 
-		if( ! isset( $_POST['affwp_activate_license'] ) )
+		if( ! isset( $_POST['affwp_activate_license'] ) ) {
 			return;
+		}
 
-		if( ! isset( $_POST['affwp_settings']['license_key'] ) )
+		if( ! isset( $_POST['affwp_settings']['license_key'] ) ) {
 			return;
+		}
 
 		// Retrieve the license status from the database.
 		$status  = $this->get( 'license_status' );
 
-		if( 'valid' == $status )
+		if( 'valid' == $status ) {
 			return; // license already activated and valid
+		}
 
 		// data to send in our API request
 		$api_params = array(
@@ -1146,8 +1150,9 @@ class Affiliate_WP_Settings {
 		$response = wp_remote_post( 'https://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
 
 		// make sure the response came back okay
-		if ( is_wp_error( $response ) )
+		if ( is_wp_error( $response ) ) {
 			return false;
+		}
 
 		// decode the license data
 		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
@@ -1157,14 +1162,17 @@ class Affiliate_WP_Settings {
 
 	public function deactivate_license() {
 
-		if( ! isset( $_POST['affwp_settings'] ) )
+		if( ! isset( $_POST['affwp_settings'] ) ) {
 			return;
+		}
 
-		if( ! isset( $_POST['affwp_deactivate_license'] ) )
+		if( ! isset( $_POST['affwp_deactivate_license'] ) ) {
 			return;
+		}
 
-		if( ! isset( $_POST['affwp_settings']['license_key'] ) )
+		if( ! isset( $_POST['affwp_settings']['license_key'] ) ) {
 			return;
+		}
 
 		// data to send in our API request
 		$api_params = array(
@@ -1178,8 +1186,9 @@ class Affiliate_WP_Settings {
 		$response = wp_remote_post( 'https://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
 
 		// make sure the response came back okay
-		if ( is_wp_error( $response ) )
+		if ( is_wp_error( $response ) ) {
 			return false;
+		}
 
 		$this->save( array( 'license_status' => 0 ) );
 	}
