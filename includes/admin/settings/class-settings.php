@@ -1132,7 +1132,7 @@ class Affiliate_WP_Settings {
 		}
 
 		// Retrieve the license status from the database.
-		$status  = $this->get( 'license_status' );
+		$status = $this->get( 'license_status' );
 
 		if( 'valid' == $status ) {
 			return; // license already activated and valid
@@ -1147,17 +1147,23 @@ class Affiliate_WP_Settings {
 		);
 
 		// Call the custom API.
+		$message  = '';
+		$success  = true;
 		$response = wp_remote_post( 'https://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
 
 		// make sure the response came back okay
 		if ( is_wp_error( $response ) ) {
-			return false;
+
+			$message = $response->get_error_message();
+
+			wp_safe_redirect( add_query_arg( array( 'message' => $message, 'success' => $success ), admin_url( 'admin.php?page=affiliate-wp-settings' ) ) ); exit;
+
 		}
 
 		// decode the license data
 		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
-		$this->save( array( 'license_status' => $license_data->license ) );
+		$this->save( array( 'license_status' => $license_data ) );
 	}
 
 	public function deactivate_license() {

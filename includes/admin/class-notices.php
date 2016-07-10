@@ -207,6 +207,7 @@ class Affiliate_WP_Admin_Notices {
 			);
 
 			if ( 'expired' === $license ) {
+
 				$notice_query_args['affwp_notice'] = 'expired_license';
 
 				echo '<div class="error info">';
@@ -215,12 +216,14 @@ class Affiliate_WP_Admin_Notices {
 				echo '</div>';
 
 			} elseif ( 'valid' !== $license ) {
+
 				$notice_query_args['affwp_notice'] = 'invalid_license';
 
 				echo '<div class="notice notice-info">';
 					echo '<p>' . sprintf( __( 'Please <a href="%s">enter and activate</a> your license key for AffiliateWP to enable automatic updates.', 'affiliate-wp' ), admin_url( 'admin.php?page=affiliate-wp-settings' ) ) . '</p>';
 					echo '<p><a href="' . wp_nonce_url( add_query_arg( $notice_query_args ), 'affwp_dismiss_notice', 'affwp_dismiss_notice_nonce' ) . '">' . _x( 'Dismiss Notice', 'License', 'affiliate-wp' ) . '</a></p>';
 				echo '</div>';
+
 			}
 
 		}
