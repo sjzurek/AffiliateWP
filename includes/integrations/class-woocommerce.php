@@ -42,7 +42,8 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		add_action( 'woocommerce_coupon_options_save', array( $this, 'store_discount_affiliate' ) );
 
 		// Per product referral rates
-		add_action( 'woocommerce_product_options_general_product_data', array( $this, 'product_settings' ), 100 );
+		add_filter( 'woocommerce_product_data_tabs', array( $this, 'product_tab' ) );
+		add_action( 'woocommerce_product_data_panels', array( $this, 'product_settings' ), 100 );
 		add_action( 'save_post', array( $this, 'save_meta' ) );
 
 		add_action( 'affwp_pre_flush_rewrites', array( $this, 'skip_generate_rewrites' ) );
@@ -421,6 +422,24 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	}
 
 	/**
+	 * Register the product settings tab
+	 *
+	 * @access  public
+	 * @since   1.8.6
+	*/
+	public function product_tab( $tabs ) {
+
+		$tabs['affiliate_wp'] = array(
+			'label'  => __( 'AffiliateWP', 'affiliate-wp' ),
+			'target' => 'affwp_product_settings',
+			'class'  => array( ),
+		);
+
+		return $tabs;
+
+	}
+
+	/**
 	 * Adds per-product referral rate settings input fields
 	 *
 	 * @access  public
@@ -430,20 +449,30 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 		global $post;
 
-		woocommerce_wp_text_input( array(
-			'id'          => '_affwp_woocommerce_product_rate',
-			'label'       => __( 'Affiliate Rate', 'affiliate-wp' ),
-			'desc_tip'    => true,
-			'description' => __( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use default affiliate rates.', 'affiliate-wp' )
-		) );
-		woocommerce_wp_checkbox( array(
-			'id'          => '_affwp_woocommerce_referrals_disabled',
-			'label'       => __( 'Disable referrals', 'affiliate-wp' ),
-			'description' => __( 'This will prevent orders of this product from generating referral commissions for affiliates.', 'affiliate-wp' ),
-			'cbvalue'     => 1
-		) );
+?>
+		<div id="affwp_product_settings" class="panel woocommerce_options_panel">
 
-		wp_nonce_field( 'affwp_woo_product_nonce', 'affwp_woo_product_nonce' );
+			<div class="options_group">
+				<p><?php _e( 'Configure affiliate rates for this product', 'affiliate-wp' ); ?></p>
+<?php
+				woocommerce_wp_text_input( array(
+					'id'          => '_affwp_woocommerce_product_rate',
+					'label'       => __( 'Affiliate Rate', 'affiliate-wp' ),
+					'desc_tip'    => true,
+					'description' => __( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use default affiliate rates.', 'affiliate-wp' )
+				) );
+				woocommerce_wp_checkbox( array(
+					'id'          => '_affwp_woocommerce_referrals_disabled',
+					'label'       => __( 'Disable referrals', 'affiliate-wp' ),
+					'description' => __( 'This will prevent orders of this product from generating referral commissions for affiliates.', 'affiliate-wp' ),
+					'cbvalue'     => 1
+				) );
+
+				wp_nonce_field( 'affwp_woo_product_nonce', 'affwp_woo_product_nonce' );
+?>
+			</div>
+		</div>
+<?php
 
 	}
 
