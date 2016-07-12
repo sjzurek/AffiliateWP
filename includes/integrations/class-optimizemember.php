@@ -46,9 +46,9 @@ class Affiliate_WP_OptimizeMember extends Affiliate_WP_Base {
 
 		}
 
-  		$om_ref_rev_notification_urls = &$om_options['ref_rev_notification_urls'];
+		$om_ref_rev_notification_urls = &$om_options['ref_rev_notification_urls'];
 
-	  	$affwp_refund_notify_url = home_url( '/?optimizemember_affiliatewp_notify=refund&txn_id=%%parent_txn_id%%&secret=' . $hash );
+		$affwp_refund_notify_url = home_url( '/?optimizemember_affiliatewp_notify=refund&txn_id=%%parent_txn_id%%&secret=' . $hash );
 
 		// Add AffiliateWP refund notification URL notification URL to the list dynamically.
 		if( stripos( $om_ref_rev_notification_urls, $affwp_refund_notify_url ) === FALSE ){
@@ -67,7 +67,11 @@ class Affiliate_WP_OptimizeMember extends Affiliate_WP_Base {
 	*/
 	public function generate_referral() {
 
-	    if( ! empty( $_REQUEST['optimizemember_affiliatewp_notify'] ) && 'payment' === $_REQUEST['optimizemember_affiliatewp_notify'] ) {
+		if( ! empty( $_REQUEST['optimizemember_affiliatewp_notify'] ) && 'payment' === $_REQUEST['optimizemember_affiliatewp_notify'] ) {
+
+			if( $this->debug ) {
+				$this->log( 'OptimizeMember payment notification.' );
+			}
 
 			$auth_key    = defined( 'AUTH_KEY' ) ? AUTH_KEY : '';
 			$secret_auth = defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : '';
@@ -76,38 +80,54 @@ class Affiliate_WP_OptimizeMember extends Affiliate_WP_Base {
 			if( empty( $_REQUEST['secret'] ) || ! hash_equals( $hash, $_REQUEST['secret'] ) ) {
 
 				if( $this->debug ) {
-					$this->log( 'optimizemember hash invalid.' );
+					$this->log( 'OptimizeMember hash invalid.' );
 				}
 
 				return;
 			}
 
-            if( ! empty( $_REQUEST['user_id'] ) && ! empty( $_REQUEST['amount'] ) && ! empty( $_REQUEST['affiliate_id'] ) ){
+			if( $this->debug ) {
+				$this->log( 'OptimizeMember hash verified.' );
+			}
 
-            	$affiliate_id 	= (int) $_REQUEST['affiliate_id'];
-            	$user_id 		= (int) $_REQUEST['user_id'];
-            	$amount 		= affwp_sanitize_amount( $_REQUEST['amount'] );
-            	$txn_id 		= sanitize_text_field( $_REQUEST['txn_id'] );
-            	$item_name 		= sanitize_text_field( $_REQUEST['item_name'] );
-            	$user_ip 		= sanitize_text_field( $_REQUEST['ip'] );
-            	$item_number 	= sanitize_text_field( $_REQUEST['item_number'] );
-            	$payer_email 	= sanitize_text_field( $_REQUEST['payer_email'] );
+			if( ! empty( $_REQUEST['user_id'] ) && ! empty( $_REQUEST['amount'] ) && ! empty( $_REQUEST['affiliate_id'] ) ){
 
-            	$args =  array(
-            		'user_id' 		=> $user_id,
-            		'amount'		=> $amount,
-            		'txn_id'		=> $txn_id,
-            		'desc'			=> $item_name,
-            		'affiliate_id'	=> $affiliate_id
-            	);
+				if( $this->debug ) {
+					$this->log( 'OptimizeMember referral validation passed.' );
+				}
+
+				$affiliate_id 	= (int) $_REQUEST['affiliate_id'];
+				$user_id 		= (int) $_REQUEST['user_id'];
+				$amount 		= affwp_sanitize_amount( $_REQUEST['amount'] );
+				$txn_id 		= sanitize_text_field( $_REQUEST['txn_id'] );
+				$item_name 		= sanitize_text_field( $_REQUEST['item_name'] );
+				$user_ip 		= sanitize_text_field( $_REQUEST['ip'] );
+				$item_number 	= sanitize_text_field( $_REQUEST['item_number'] );
+				$payer_email 	= sanitize_text_field( $_REQUEST['payer_email'] );
+
+				$args =  array(
+					'user_id' 		=> $user_id,
+					'amount'		=> $amount,
+					'txn_id'		=> $txn_id,
+					'desc'			=> $item_name,
+					'affiliate_id'	=> $affiliate_id
+				);
 
 				$this->add_pending_referral( $args );
 
-				$this->complete_referral( $txn_id );
-            }
+				if( $this->debug ) {
+					$this->log( 'OptimizeMember pending referral created.' );
+				}
 
-            exit;
-	    }
+				$this->complete_referral( $txn_id );
+
+				if( $this->debug ) {
+					$this->log( 'OptimizeMember referral completed.' );
+				}
+			}
+
+			exit;
+		}
 
 	}
 
@@ -119,7 +139,11 @@ class Affiliate_WP_OptimizeMember extends Affiliate_WP_Base {
 	*/
 	public function revoke_referral_on_refund() {
 
-	    if( ! empty( $_REQUEST['optimizemember_affiliatewp_notify'] ) && $_REQUEST['optimizemember_affiliatewp_notify'] === 'refund' ) {
+		if( ! empty( $_REQUEST['optimizemember_affiliatewp_notify'] ) && $_REQUEST['optimizemember_affiliatewp_notify'] === 'refund' ) {
+
+			if( $this->debug ) {
+				$this->log( 'OptimizeMember refund notification.' );
+			}
 
 			$auth_key    = defined( 'AUTH_KEY' ) ? AUTH_KEY : '';
 			$secret_auth = defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : '';
@@ -128,13 +152,17 @@ class Affiliate_WP_OptimizeMember extends Affiliate_WP_Base {
 			if( empty( $_REQUEST['secret'] ) || ! hash_equals( $hash, $_REQUEST['secret'] ) ) {
 
 				if( $this->debug ) {
-					$this->log( 'optimizemember hash invalid.' );
+					$this->log( 'OptimizeMember hash invalid.' );
 				}
 
 				return;
 			}
 
-	    	if( ! empty( $_REQUEST['txn_id'] ) ) {
+			if( $this->debug ) {
+				$this->log( 'OptimizeMember hash verified.' );
+			}
+
+			if( ! empty( $_REQUEST['txn_id'] ) ) {
 
 				if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
 					return;
@@ -142,11 +170,11 @@ class Affiliate_WP_OptimizeMember extends Affiliate_WP_Base {
 
 				$this->reject_referral( $_REQUEST['txn_id'] );
 
-	    	}
+			}
 
-	    	exit;
+			exit;
 
-	    }
+		}
 
 	}
 
@@ -173,9 +201,9 @@ class Affiliate_WP_OptimizeMember extends Affiliate_WP_Base {
 
 			}
 
-		    $amount      = $args['amount'];
+			$amount      = $args['amount'];
 			$order_id    = $args['txn_id'];
-		    $description = $args['desc'];
+			$description = $args['desc'];
 
 			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
@@ -198,13 +226,21 @@ class Affiliate_WP_OptimizeMember extends Affiliate_WP_Base {
 	*/
 	public function set_referral_variable( $vars ){
 
+		if( $this->debug ) {
+			$this->log( 'OptimizeMember set_referral_variable() ran.' );
+		}
+
 		if( affiliate_wp()->tracking->get_affiliate_id() ){
 
-	        $affiliate_id 	= affiliate_wp()->tracking->get_affiliate_id();
-	        $vars["__refs"]["attr"]["custom"] .= "|" . $affiliate_id;
+			if( $this->debug ) {
+				$this->log( 'OptimizeMember affiliate ID was found.' );
+			}
+
+			$affiliate_id = affiliate_wp()->tracking->get_affiliate_id();
+			$vars["__refs"]["attr"]["custom"] .= "|" . $affiliate_id;
 
 		}
-    }
+	}
 
 }
 new Affiliate_WP_OptimizeMember;
