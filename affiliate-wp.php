@@ -355,6 +355,10 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/plugin-compatibility.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/scripts.php';
 
+		// REST endpoints.
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/REST/class-rest.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/REST/class-rest-affiliates.php';
+
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/cli/class-cli.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/cli/class-object-cli.php';
