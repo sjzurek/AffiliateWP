@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Class Affiliate_WP_Referrals_DB
+ *
+ * @see Affiliate_WP_DB
+ *
+ * @property-read \AffWP\Affiliate\REST $REST REST instance.
+ */
 class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 	/**
@@ -30,8 +36,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	 * @since   1.0
 	*/
 	public function __construct() {
-
-		global $wpdb;
+		global $wpdb, $wp_version;
 
 		if( defined( 'AFFILIATE_WP_NETWORK_WIDE' ) && AFFILIATE_WP_NETWORK_WIDE ) {
 			// Allows a single referrals table for the whole network
@@ -42,6 +47,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		$this->primary_key = 'referral_id';
 		$this->version     = '1.1';
 
+		// REST endpoints.
+		if ( version_compare( $wp_version, '4.4', '>=' ) ) {
+			$this->REST = new \AffWP\Referral\REST;
+		}
 	}
 
 	/**

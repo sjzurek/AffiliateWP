@@ -8,7 +8,7 @@ use AffWP\REST\Controller as Controller;
  *
  * @since 1.9
  *
- * @see AffWP\REST_Controller
+ * @see AffWP\REST\Controller
  */
 class REST extends Controller {
 
