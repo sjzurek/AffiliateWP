@@ -182,7 +182,7 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 
 			$reference   = sanitize_text_field( $_POST['txn_id'] );
 			$description = ! empty( $_POST['item_name'] ) ? sanitize_text_field( $_POST['item_name'] ) : sanitize_text_field( $_POST['payer_email'] );
-			$amount      = $this->calculate_referral_amount( $total, $reference );
+			$amount      = $this->calculate_referral_amount( $total, $reference, 0, $referral->affiliate_id );
 
 			$referral->set( 'description', $description );
 			$referral->set( 'amount', $amount );
