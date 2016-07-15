@@ -56,9 +56,9 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 					success: function (response) {
 
 						console.log( response );
-
-						$form.append( '<input type="hidden" name="custom" value="' + response.data.ref + '"' );
-						$form.append( '<input type="hidden" name="notify_url" value="' + ipn_url + '"' );
+console.log( $form.prop('action' ) );
+						$form.append( '<input type="hidden" name="custom" value="' + response.data.ref + '"/>' );
+						$form.append( '<input type="hidden" name="notify_url" value="' + ipn_url + '"/>' );
 
 						$form.get(0).submit();
 
