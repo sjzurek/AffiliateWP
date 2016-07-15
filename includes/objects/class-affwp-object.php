@@ -165,9 +165,9 @@ abstract class Object {
 
 		if ( true === $save ) {
 			return $this->save();
-		} else {
-			return $this->ID;
 		}
+
+		return true;
 	}
 
 	/**
@@ -185,11 +185,11 @@ abstract class Object {
 
 		$updated = affiliate_wp()->{$object_group}->update( $this->ID, $this->to_array(), '', $object_type );
 
-		if ( $updated ) {
-			return $this->ID;
-		} else {
+		if ( ! $updated ) {
 			return false;
 		}
+
+		return true;
 	}
 
 	/**
