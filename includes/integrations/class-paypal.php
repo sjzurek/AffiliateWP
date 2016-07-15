@@ -55,8 +55,6 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 					url: affwp_scripts.ajaxurl,
 					success: function (response) {
 
-						console.log( response );
-
 						$form.append( '<input type="hidden" name="custom" value="' + response.data.ref + '"/>' );
 						$form.append( '<input type="hidden" name="notify_url" value="' + ipn_url + '"/>' );
 
@@ -90,7 +88,8 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
-			$referral_id = $this->insert_pending_referral( 0.01, affiliate_wp()->tracking->get_visit_id() . '|' . $this->affiliate_id, __( 'Pending PayPal referral', 'affiliate-wp' ) );
+			$reference   = affiliate_wp()->tracking->get_visit_id() . '|' . $this->affiliate_id . '|' . time();
+			$referral_id = $this->insert_pending_referral( 0.01, $reference, __( 'Pending PayPal referral', 'affiliate-wp' ) );
 
 			if( $referral_id && $this->debug ) {
 
@@ -122,12 +121,26 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 			return;
 		}
 
-		// TODO verify IPN here
+		$verified = $this->verify_ipn();
+
 		if( $this->debug ) {
 
-			$this->log( 'IPN verified successfully during process_ipn()' );
+			if( $verified ) {
+
+				$this->log( 'IPN verified successfully during process_ipn()' );
+
+			} else {
+
+				$this->log( 'IPN could not be verified during process_ipn()' );
+
+			}
+
 			$this->log( 'IPN Data: ' . print_r( $_POST, true ) );
 
+		}
+
+		if( ! $verified ) {
+			die( 'IPN verification failed' );
 		}
 
 		$total        = sanitize_text_field( $_POST['mc_gross'] );
@@ -224,6 +237,19 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 
 		}
 
+	}
+
+	/**
+	 * Verify IPN from PayPal
+	 *
+	 * @access  public
+	 * @since   1.9
+	 * @return  bool True|false
+	*/
+	private function verify_ipn() {
+
+		// TODO actually verify IPN here
+		return true;
 	}
 
 	/**
