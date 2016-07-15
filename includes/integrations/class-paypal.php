@@ -170,11 +170,11 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 			die( 'Referral not pending' );
 		}
 
-		$visit->set( 'referral_id', $referral->id, true );
+		$visit->set( 'referral_id', $referral->ID, true );
 
 		if( $this->debug ) {
 
-			$this->log( 'Referral ID successfully retrieved during process_ipn()' );
+			$this->log( 'Referral ID (' . $referral->ID . ') successfully retrieved during process_ipn()' );
 
 		}
 
