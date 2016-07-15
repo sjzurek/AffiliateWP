@@ -186,27 +186,41 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 
 			$referral->set( 'description', $description );
 			$referral->set( 'amount', $amount );
-			$referral->set( 'reference', $reference, true );
+			$referral->set( 'reference', $reference );
 
-			$completed = $this->complete_referral( $reference );
+			if( $referral->save() ) {
 
-			if( $completed ) {
+				$completed = $this->complete_referral( $reference );
 
-				if( $this->debug ) {
+				if( $completed ) {
 
-					$this->log( 'Referral completed successfully during process_ipn()' );
+					if( $this->debug ) {
+
+						$this->log( 'Referral completed successfully during process_ipn()' );
+
+					}
+
+					die( 'Referral completed successfully' );
+
+				} else if ( $this->debug ) {
+
+					$this->log( 'Referral failed to be completed during process_ipn()' );
 
 				}
 
-				die( 'Referral completed successfully' );
+				die( 'Referral not completed successfully' );
 
-			} else if ( $this->debug ) {
+			} else {
 
-				$this->log( 'Referral failed to be completed during process_ipn()' );
+				if ( $this->debug ) {
+
+					$this->log( 'Referral not updated successfully during process_ipn()' );
+
+				}
+
+				die( 'Referral not updated successfully' );
 
 			}
-
-			die( 'Referral not completed successfully' );
 
 		}
 
