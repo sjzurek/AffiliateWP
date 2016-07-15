@@ -196,13 +196,13 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 
 					$this->log( 'Referral completed successfully during process_ipn()' );
 
-				} else {
-
-					$this->log( 'Referral failed to be completed during process_ipn()' );
-
 				}
 
 				die( 'Referral completed successfully' );
+
+			} else if ( $this->debug ) {
+
+				$this->log( 'Referral failed to be completed during process_ipn()' );
 
 			}
 
