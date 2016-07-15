@@ -126,6 +126,7 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 		if( $this->debug ) {
 
 			$this->log( 'IPN verified successfully during process_ipn()' );
+			$this->log( 'IPN Data: ' . print_r( $_POST, true ) );
 
 		}
 
