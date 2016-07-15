@@ -125,7 +125,9 @@ abstract class Object {
 			$primary_key  = affiliate_wp()->{$object_group}->primary_key;
 
 			return $this->{$primary_key};
-		} elseif ( isset( $this->{$key} ) ) {
+		}
+
+		if ( isset( $this->{$key} ) ) {
 			return $this->{$key};
 		}
 	}
@@ -157,7 +159,7 @@ abstract class Object {
 	 * @return int|false The object ID on success, false otherwise.
 	 */
 	public function set( $key, $value, $save = false ) {
-		if ( ! isset( $key ) ) {
+		if ( ! isset( $this->{$key} ) ) {
 			return false;
 		}
 
