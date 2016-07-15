@@ -18,7 +18,8 @@ namespace AffWP;
  * @see AffWP\Object
  * @see affwp_get_affiliate()
  *
- * @property-read int $ID Alias for `$affiliate_id`
+ * @property-read int     $ID   Alias for `$affiliate_id`.
+ * @property-read WP_User $user User object.
  */
 final class Affiliate extends Object {
 
@@ -85,7 +86,7 @@ final class Affiliate extends Object {
 	 *
 	 * @since 1.9
 	 * @access public
-	 * @var string
+	 * @var float
 	 */
 	public $earnings;
 
@@ -141,6 +142,43 @@ final class Affiliate extends Object {
 	public static $object_type = 'affiliate';
 
 	/**
+	 * Retrieves the values of the given key.
+	 *
+	 * @since 1.9
+	 * @access public
+	 *
+	 * @param string $key Key to retrieve the value for.
+	 * @return mixed|\WP_User Value.
+	 */
+	public function __get( $key ) {
+		if ( 'user' === $key ) {
+			return $this->build_the_user_object();
+		}
+
+		return parent::__get( $key );
+	}
+
+	/**
+	 * Builds the lazy-loaded user object with first and last name fields.
+	 *
+	 * @since 1.9
+	 * @access private
+	 *
+	 * @return false|\WP_User Built user object or false if it doesn't exist.
+	 */
+	private function build_the_user_object() {
+		$user = get_user_by( 'id', $this->user_id );
+
+		if ( $user ) {
+			foreach ( array( 'first_name', 'last_name' ) as $field ) {
+				$user->data->{$field} = get_user_meta( $this->user_id, $field, true );
+			}
+		}
+
+		return $user;
+	}
+
+	/**
 	 * Sanitizes an affiliate object field.
 	 *
 	 * @since 1.9
@@ -154,6 +192,10 @@ final class Affiliate extends Object {
 	public static function sanitize_field( $field, $value ) {
 		if ( in_array( $field, array( 'affiliate_id', 'user_id', 'referrals', 'visits', 'ID' ) ) ) {
 			$value = (int) $value;
+		}
+
+		if ( 'earnings' === $field ) {
+			$value = floatval( $value );
 		}
 
 		return $value;
