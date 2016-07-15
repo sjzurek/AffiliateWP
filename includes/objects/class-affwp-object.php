@@ -159,10 +159,6 @@ abstract class Object {
 	 * @return int|false The object ID on success, false otherwise.
 	 */
 	public function set( $key, $value, $save = false ) {
-		if ( ! isset( $this->{$key} ) ) {
-			return false;
-		}
-
 		$this->$key = static::sanitize_field( $key, $value );
 
 		if ( true === $save ) {
