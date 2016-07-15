@@ -190,7 +190,7 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 
 			if( $referral->save() ) {
 
-				$completed = $this->complete_referral( $reference );
+				$completed = $this->complete_referral( $referral );
 
 				if( $completed ) {
 
