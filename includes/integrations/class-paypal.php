@@ -129,7 +129,7 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 
 		}
 
-		$amount       = sanitize_text_field( $_POST['mc_gross'] );
+		$total        = sanitize_text_field( $_POST['mc_gross'] );
 		$custom       = explode( '|', $_POST['custom'] );
 		$visit_id     = $custom[0];
 		$affiliate_id = $custom[1];
@@ -181,8 +181,10 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 
 			$reference   = sanitize_text_field( $_POST['txn_id'] );
 			$description = ! empty( $_POST['item_name'] ) ? sanitize_text_field( $_POST['item_name'] ) : sanitize_text_field( $_POST['payer_email'] );
+			$amount      = $this->calculate_referral_amount( $total, $reference );
 
 			$referral->set( 'description', $description );
+			$referral->set( 'amount', $amount );
 			$referral->set( 'reference', $reference, true );
 
 			$this->complete_referral( $reference );
