@@ -56,7 +56,7 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 					success: function (response) {
 
 						console.log( response );
-console.log( $form.prop('action' ) );
+
 						$form.append( '<input type="hidden" name="custom" value="' + response.data.ref + '"/>' );
 						$form.append( '<input type="hidden" name="notify_url" value="' + ipn_url + '"/>' );
 
@@ -188,15 +188,25 @@ console.log( $form.prop('action' ) );
 			$referral->set( 'amount', $amount );
 			$referral->set( 'reference', $reference, true );
 
-			$this->complete_referral( $reference );
+			$completed = $this->complete_referral( $reference );
 
-			if( $this->debug ) {
+			if( $completed ) {
 
-				$this->log( 'Referral completed successfully during process_ipn()' );
+				if( $this->debug ) {
+
+					$this->log( 'Referral completed successfully during process_ipn()' );
+
+				} else {
+
+					$this->log( 'Referral failed to be completed during process_ipn()' );
+
+				}
+
+				die( 'Referral completed successfully' );
 
 			}
 
-			die( 'Referral completed successfully' );
+			die( 'Referral not completed successfully' );
 
 		}
 
