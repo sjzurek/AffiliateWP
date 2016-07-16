@@ -155,6 +155,26 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	}
 
 	/**
+	 * Wrapper for the update_referral() method.
+	 *
+	 * @since 1.9
+	 * @access public
+	 *
+	 * @see update_referral()
+	 *
+	 * @param int|\AffWP\Referral $referral Referral ID for the record being updated.
+	 * @param array               $data     Optional. Array of columns and associated data to update.
+	 *                                      Default empty array.
+	 * @param string              $where    Optional. Column to match against in the WHERE clause. If empty,
+	 *                                      $primary_key will be used. Default empty.
+	 * @param string              $type     Optional. Data type context. Default 'referral'.
+	 * @return bool False if the record could not be updated, true otherwise.
+	 */
+	public function update( $referral, $data = array(), $where = '', $type = 'referral' ) {
+		return $this->update_referral( $referral, $data, $where, $type );
+	}
+
+	/**
 	 * Update a referral.
 	 *
 	 * @access  public
@@ -162,7 +182,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	 *
 	 * @param int|AffWP\Referral $referral Referral ID or object.
 	*/
-	public function update_referral( $referral = 0, $data = array() ) {
+	public function update_referral( $referral = 0, $data = array(), $where = '', $type = 'referral' ) {
 
 		if ( ! $referral = affwp_get_referral( $referral ) ) {
 			return false;
@@ -180,7 +200,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			$data['date'] = date_i18n( 'Y-m-d H:i:s', strtotime( $data['date'] ) );
 		}
 
-		$update = $this->update( $referral->ID, $data, '', 'referral' );
+		$update = parent::update( $referral->ID, $data, '', 'referral' );
 
 		if( $update ) {
 
