@@ -181,7 +181,19 @@ abstract class Object {
 		$object_type  = $Sub_Class::$object_type;
 		$object_group = $Sub_Class::$object_group;
 
-		$updated = affiliate_wp()->{$object_group}->update( $this->ID, $this->to_array(), '', $object_type );
+		switch ( $object_type ) {
+			case 'referral':
+				$updated = affiliate_wp()->referrals->update_referral( $this->ID, $this->to_array() );
+				break;
+
+			case 'visit':
+				$updated = affiliate_wp()->visits->update_visit( $this->ID, $this->to_array() );
+				break;
+
+			default:
+				$updated = affiliate_wp()->{$object_group}->update( $this->ID, $this->to_array(), '', $object_type );
+				break;
+		}
 
 		if ( ! $updated ) {
 			return false;
