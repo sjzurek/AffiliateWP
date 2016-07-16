@@ -188,7 +188,7 @@ abstract class Affiliate_WP_Base {
 
 		if ( affwp_set_referral_status( $referral->referral_id, 'unpaid' ) ) {
 
-			do_action( 'affwp_complete_referral', $referral->referral_id, $referral, $reference );
+			do_action( 'affwp_complete_referral', $referral->referral_id, $referral, $referral->reference );
 
 			if( $this->debug ) {
 				$this->log( sprintf( 'Referral #%d set to Unpaid successfully', $referral->referral_id ) );
