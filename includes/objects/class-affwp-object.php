@@ -150,6 +150,10 @@ abstract class Object {
 	/**
 	 * Sets an object property value and optionally save.
 	 *
+	 * @internal Note: Checking isset() on $this->{$key} is missing here because
+	 *           this method is also used directly by set() which is leveraged for
+	 *           magic properties.
+	 *
 	 * @since 1.9
 	 * @access public
 	 *
