@@ -201,7 +201,11 @@ class Affiliate_WP_PayPal extends Affiliate_WP_Base {
 			$referral->set( 'amount', $amount );
 			$referral->set( 'reference', $reference );
 
+			$this->log( 'Referral updated in preparation for save(): ' . print_r( $referral->to_array(), true ) );
+
 			if( $referral->save() ) {
+
+				$this->log( 'Referral saved: ' . print_r( $referral->to_array(), true ) );
 
 				$completed = $this->complete_referral( $referral );
 
