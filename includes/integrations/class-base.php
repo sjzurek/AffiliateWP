@@ -169,7 +169,16 @@ abstract class Affiliate_WP_Base {
 		}
 
 		if ( empty( $referral ) ) {
+
+			if( $this->debug ) {
+				$this->log( 'Referral could not be retrieved during complete_referral(). Value given: ' . print_r( $reference_or_referral, true ) );
+			}
+
 			return false;
+		}
+
+		if( $this->debug ) {
+			$this->log( 'Referral retrieved successfully during complete_referral()' );
 		}
 
 		if ( is_object( $referral ) && $referral->status != 'pending' ) {
