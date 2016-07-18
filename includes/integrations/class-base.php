@@ -155,6 +155,11 @@ abstract class Affiliate_WP_Base {
 	public function complete_referral( $reference_or_referral = 0 ) {
 
 		if ( empty( $reference_or_referral ) ) {
+
+			if( $this->debug ) {
+				$this->log( 'Empty $reference_or_referral parameter given during complete_referral()' );
+			}
+
 			return false;
 		}
 
