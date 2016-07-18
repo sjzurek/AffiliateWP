@@ -151,7 +151,7 @@ abstract class Object {
 	 * Sets an object property value and optionally save.
 	 *
 	 * @internal Note: Checking isset() on $this->{$key} is missing here because
-	 *           this method is also used directly by set() which is leveraged for
+	 *           this method is also used directly by __set() which is leveraged for
 	 *           magic properties.
 	 *
 	 * @since 1.9
@@ -160,12 +160,20 @@ abstract class Object {
 	 * @param string $key   Property name.
 	 * @param mixed  $value Property value.
 	 * @param bool   $save  Optional. Whether to save the new value in the database.
-	 * @return int|false The object ID on success, false otherwise.
+	 * @return int|false True if the value was set. If `$save` is true, true if the save was successful.
+	 *                   False if `$save` is true and the save was unsuccessful. false otherwise.
 	 */
 	public function set( $key, $value, $save = false ) {
 		$this->$key = static::sanitize_field( $key, $value );
 
 		if ( true === $save ) {
+			// Only real properties can be saved.
+			$keys = array_keys( get_class_vars( get_called_class() ) );
+
+			if ( ! in_array( $key, $keys ) ) {
+				return false;
+			}
+
 			return $this->save();
 		}
 
@@ -178,7 +186,7 @@ abstract class Object {
 	 * @since 1.9
 	 * @access public
 	 *
-	 * @return int|false The object ID on success, false otherwise.
+	 * @return bool True on success, false on failure.
 	 */
 	public function save() {
 		$Sub_Class    = get_called_class();
@@ -199,11 +207,11 @@ abstract class Object {
 				break;
 		}
 
-		if ( ! $updated ) {
-			return false;
+		if ( $updated ) {
+			return true;
 		}
 
-		return true;
+		return false;
 	}
 
 	/**

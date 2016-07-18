@@ -262,6 +262,11 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 				}
 
+				// Check for Recurring Payments signup fee
+				if( ! empty( $download['item_number']['options']['recurring']['signup_fee'] ) ) {
+					$amount += $download['item_number']['options']['recurring']['signup_fee'];
+				}
+
 				$referral_total += $this->calculate_referral_amount( $amount, $payment_id, $download['id'], $affiliate_id );
 			}
 

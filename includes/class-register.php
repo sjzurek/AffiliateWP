@@ -82,7 +82,7 @@ class Affiliate_WP_Register {
 				}
 			}
 
-			if ( strlen( $date['affwp_user_login'] ) > 60 ) {
+			if ( strlen( $data['affwp_user_login'] ) > 60 ) {
 				$this->add_error( 'username_invalid_length', __( 'Invalid username. Must be between 1 and 60 characters.', 'affiliate-wp' ) );
 			}
 
