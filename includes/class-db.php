@@ -229,6 +229,11 @@ abstract class Affiliate_WP_DB {
 		// Unslash data.
 		$data = wp_unslash( $data );
 
+		// Ensure primary key is not included in the $data array
+		if( isset( $data[ $this->primary_key ] ) ) {
+			unset( $data[ $this->primary_key ] );
+		}
+
 		// Reorder $column_formats to match the order of columns given in $data
 		$data_keys = array_keys( $data );
 		$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
@@ -246,7 +251,7 @@ abstract class Affiliate_WP_DB {
 		 * @param array $data Array of item data.
 		 */
 		do_action( 'affwp_post_update_' . $type, $data );
-		
+
 		return true;
 	}
 
