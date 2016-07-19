@@ -56,8 +56,8 @@ abstract class Object {
 
 		$Sub_Class    = get_called_class();
 		$cache_key    = self::get_cache_key( $object_id );
-		$cache_group  = $Sub_Class::$object_type;
-		$object_group = $Sub_Class::$object_group;
+		$cache_group  = static::$object_type;
+		$object_group = static::$object_group;
 
 		$_object = wp_cache_get( $cache_key, $cache_group );
 
@@ -91,9 +91,7 @@ abstract class Object {
 	 * @return string Cache key for the object type and ID.
 	 */
 	public static function get_cache_key( $object_id ) {
-		$Sub_Class = get_called_class();
-
-		return md5( $Sub_Class::$cache_token . ':' . $object_id );
+		return md5( static::$cache_token . ':' . $object_id );
 	}
 
 	/**
@@ -120,8 +118,7 @@ abstract class Object {
 	 */
 	public function __get( $key ) {
 		if ( 'ID' === $key ) {
-			$Sub_Class    = get_called_class();
-			$object_group = $Sub_Class::$object_group;
+			$object_group = static::$object_group;
 			$primary_key  = affiliate_wp()->{$object_group}->primary_key;
 
 			return $this->{$primary_key};
@@ -189,9 +186,8 @@ abstract class Object {
 	 * @return bool True on success, false on failure.
 	 */
 	public function save() {
-		$Sub_Class    = get_called_class();
-		$object_type  = $Sub_Class::$object_type;
-		$object_group = $Sub_Class::$object_group;
+		$object_type  = static::$object_type;
+		$object_group = static::$object_group;
 		$primary_key  = affiliate_wp()->{$object_group}->primary_key;
 
 		switch ( $object_type ) {
