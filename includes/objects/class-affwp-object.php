@@ -195,15 +195,15 @@ abstract class Object {
 
 		switch ( $object_type ) {
 			case 'referral':
-				$updated = affiliate_wp()->referrals->update_referral( $this->{$primary_key}, $this->to_array() );
+				$updated = affiliate_wp()->referrals->update_referral( $this->ID, $this->to_array() );
 				break;
 
 			case 'visit':
-				$updated = affiliate_wp()->visits->update_visit( $this->{$primary_key}, $this->to_array() );
+				$updated = affiliate_wp()->visits->update_visit( $this->ID, $this->to_array() );
 				break;
 
 			default:
-				$updated = affiliate_wp()->{$object_group}->update( $this->{$primary_key}, $this->to_array(), '', $object_type );
+				$updated = affiliate_wp()->{$object_group}->update( $this->ID, $this->to_array(), '', $object_type );
 				break;
 		}
 
