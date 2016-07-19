@@ -186,9 +186,12 @@ abstract class Object {
 	 * @return bool True on success, false on failure.
 	 */
 	public function save() {
-		$object_type  = static::$object_type;
-		$object_group = static::$object_group;
-		$primary_key  = affiliate_wp()->{$object_group}->primary_key;
+		// Refresh the instance before save.
+		static::get_instance( $this->ID );
+
+		$Sub_Class    = get_called_class();
+		$object_type  = $Sub_Class::$object_type;
+		$object_group = $Sub_Class::$object_group;
 
 		switch ( $object_type ) {
 			case 'referral':
