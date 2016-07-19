@@ -130,6 +130,17 @@ final class Affiliate extends Object {
 	public static $cache_token = 'affwp_affiliates';
 
 	/**
+	 * Database group.
+	 *
+	 * Used in \AffWP\Object for accessing the affiliates DB class methods.
+	 *
+	 * @since 1.9
+	 * @access public
+	 * @var string
+	 */
+	public static $db_group = 'affiliates';
+
+	/**
 	 * Object type.
 	 *
 	 * Used as the cache group and for accessing object DB classes in the parent.
@@ -199,22 +210,6 @@ final class Affiliate extends Object {
 		}
 
 		return $value;
-	}
-
-	/**
-	 * Retrieves the object instance.
-	 *
-	 * @since 1.9
-	 * @access public
-	 * @static
-	 *
-	 * @param int $object Object ID.
-	 * @return object|false Object instance or false.
-	 */
-	public static function get_instance( $object_id ) {
-		self::$object_group = affiliate_wp()->affiliates->cache_group;
-
-		return parent::get_instance( $object_id );
 	}
 
 	/**

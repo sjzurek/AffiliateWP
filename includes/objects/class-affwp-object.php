@@ -28,18 +28,6 @@ abstract class Object {
 	protected $filled = null;
 
 	/**
-	 * Object group.
-	 *
-	 * Should be initialized in extending class versions of get_instance().
-	 *
-	 * @since 1.9
-	 * @access public
-	 * @static
-	 * @var string
-	 */
-	public static $object_group;
-
-	/**
 	 * Retrieves the object instance.
 	 *
 	 * @since 1.9
@@ -54,15 +42,14 @@ abstract class Object {
 			return false;
 		}
 
-		$Sub_Class    = get_called_class();
-		$cache_key    = self::get_cache_key( $object_id );
-		$cache_group  = static::$object_type;
-		$object_group = static::$object_group;
+		$Sub_Class   = get_called_class();
+		$cache_key   = self::get_cache_key( $object_id );
+		$cache_group = static::$object_type;
 
 		$_object = wp_cache_get( $cache_key, $cache_group );
 
 		if ( false === $_object ) {
-			$_object = affiliate_wp()->{$object_group}->get( $object_id );
+			$_object = affiliate_wp()->{static::$db_group}->get( $object_id );
 
 			if ( ! $_object ) {
 				return false;
@@ -118,8 +105,7 @@ abstract class Object {
 	 */
 	public function __get( $key ) {
 		if ( 'ID' === $key ) {
-			$object_group = static::$object_group;
-			$primary_key  = affiliate_wp()->{$object_group}->primary_key;
+			$primary_key  = affiliate_wp()->{static::$db_group}->primary_key;
 
 			return $this->{$primary_key};
 		}
@@ -186,12 +172,7 @@ abstract class Object {
 	 * @return bool True on success, false on failure.
 	 */
 	public function save() {
-		// Refresh the instance before save.
-		static::get_instance( $this->ID );
-
-		$Sub_Class    = get_called_class();
-		$object_type  = $Sub_Class::$object_type;
-		$object_group = $Sub_Class::$object_group;
+		$object_type = static::$object_type;
 
 		switch ( $object_type ) {
 			case 'referral':
@@ -203,7 +184,8 @@ abstract class Object {
 				break;
 
 			default:
-				$updated = affiliate_wp()->{$object_group}->update( $this->ID, $this->to_array(), '', $object_type );
+				// Affiliates and Creatives have update() methods.
+				$updated = affiliate_wp()->{static::$db_group}->update( $this->ID, $this->to_array(), '', $object_type );
 				break;
 		}
 

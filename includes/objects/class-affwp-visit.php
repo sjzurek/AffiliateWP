@@ -107,6 +107,17 @@ final class Visit extends Object {
 	public static $cache_token = 'affwp_visits';
 
 	/**
+	 * Database group.
+	 *
+	 * Used in \AffWP\Object for accessing the visits DB class methods.
+	 *
+	 * @since 1.9
+	 * @access public
+	 * @var string
+	 */
+	public static $db_group = 'visits';
+
+	/**
 	 * Object type.
 	 *
 	 * Used as the cache group and for accessing object DB classes in the parent.
@@ -134,22 +145,6 @@ final class Visit extends Object {
 			$value = (int) $value;
 		}
 		return $value;
-	}
-
-	/**
-	 * Retrieves the object instance.
-	 *
-	 * @since 1.9
-	 * @access public
-	 * @static
-	 *
-	 * @param int $object Object ID.
-	 * @return object|false Object instance or false.
-	 */
-	public static function get_instance( $object_id ) {
-		self::$object_group = affiliate_wp()->visits->cache_group;
-
-		return parent::get_instance( $object_id );
 	}
 
 }
